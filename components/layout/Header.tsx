@@ -66,25 +66,25 @@ export const Header: React.FC = () => {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-navy-900/90 backdrop-blur-xl shadow-elevated border-b border-brass/20 py-3'
-            : 'bg-navy-900 text-ivory py-4 border-b border-navy-800'
+            ? 'bg-white/95 backdrop-blur-md shadow-md py-3.5 border-b border-slate-200'
+            : 'bg-white text-slate-900 py-4.5 border-b border-slate-200'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo with Gradient Icon */}
+            {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-brass rounded-lg p-1"
+              className="flex items-center gap-3 group focus:outline-none rounded-lg"
             >
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brass to-brass-dark text-navy-950 flex items-center justify-center font-serif font-bold text-xl shadow-glow-brass group-hover:scale-105 transition-all">
+              <div className="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-serif font-bold text-xl shadow-sm group-hover:scale-105 transition-all">
                 <span>S</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-bold text-ivory tracking-tight group-hover:text-brass transition-colors">
+                <span className="font-serif text-lg font-bold text-slate-950 tracking-tight group-hover:text-cyan-700 transition-colors">
                   {practiceConfig.name}
                 </span>
-                <span className="text-[11px] text-sage font-sans tracking-wide uppercase">
+                <span className="text-[11px] text-slate-600 font-sans tracking-wide uppercase font-semibold">
                   {isLab
                     ? 'Dental Prosthetics Lab'
                     : isOrtho
@@ -96,12 +96,12 @@ export const Header: React.FC = () => {
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1" aria-label="Main Navigation">
+            {/* Clean Desktop Navigation Bar */}
+            <nav className="hidden lg:flex items-center space-x-7" aria-label="Main Navigation">
               <Link
                 href="/"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 Home
@@ -109,14 +109,14 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/about"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/about' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/about' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 About
               </Link>
 
-              {/* Treatments Mega Menu */}
+              {/* Treatments Dropdown Menu */}
               <div
                 className="relative"
                 onMouseEnter={() => setMegaMenuOpen(true)}
@@ -124,22 +124,22 @@ export const Header: React.FC = () => {
               >
                 <Link
                   href="/treatments"
-                  className={`px-3 py-2 text-sm font-medium flex items-center gap-1 transition-colors hover:text-brass ${
-                    pathname.startsWith('/treatments') ? 'text-brass font-semibold' : 'text-ivory/90'
+                  className={`text-sm font-bold flex items-center gap-1 transition-colors hover:text-cyan-700 ${
+                    pathname.startsWith('/treatments') ? 'text-cyan-700' : 'text-slate-800'
                   }`}
                   aria-expanded={megaMenuOpen}
                 >
                   {isLab ? 'Lab Services' : 'Treatments'}
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-200 ${
-                      megaMenuOpen ? 'rotate-180 text-brass' : 'text-ivory/60'
+                      megaMenuOpen ? 'rotate-180 text-cyan-700' : 'text-slate-500'
                     }`}
                   />
                 </Link>
 
-                {/* Mega Menu Panel */}
+                {/* Clean Mega Menu Panel */}
                 {megaMenuOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[780px] bg-navy-900/95 backdrop-blur-2xl border border-brass/30 shadow-elevated rounded-2xl p-6 grid grid-cols-3 gap-6 animate-fadeIn">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-[760px] bg-white border border-slate-200 shadow-2xl rounded-2xl p-6 grid grid-cols-3 gap-6 animate-fadeIn mt-2 z-50">
                     {categories.map((cat) => {
                       const items = treatmentsData.filter(
                         (t) => t.category === cat.id
@@ -147,16 +147,16 @@ export const Header: React.FC = () => {
                       if (items.length === 0) return null;
                       return (
                         <div key={cat.id} className="space-y-3">
-                          <div className="flex items-center gap-2 pb-2 border-b border-navy-800 text-brass text-xs font-bold uppercase tracking-wider">
-                            <cat.icon className="w-4 h-4 text-brass" />
+                          <div className="flex items-center gap-2 pb-2 border-b border-slate-100 text-cyan-700 text-xs font-bold uppercase tracking-wider">
+                            <cat.icon className="w-4 h-4 text-cyan-600" />
                             {cat.title}
                           </div>
-                          <ul className="space-y-1.5 text-sm">
+                          <ul className="space-y-1.5 text-xs font-medium">
                             {items.map((treatment) => (
                               <li key={treatment.slug}>
                                 <Link
                                   href={`/treatments/${treatment.slug}`}
-                                  className="text-ivory/80 hover:text-brass hover:translate-x-1 transition-all block py-1 font-sans text-xs"
+                                  className="text-slate-700 hover:text-cyan-700 hover:translate-x-1 transition-all block py-1 font-sans"
                                 >
                                   {treatment.name}
                                 </Link>
@@ -166,11 +166,11 @@ export const Header: React.FC = () => {
                         </div>
                       );
                     })}
-                    <div className="col-span-3 pt-3 border-t border-navy-800 flex items-center justify-between text-xs text-sage">
-                      <span>Full written treatment estimates provided following clinical assessment.</span>
+                    <div className="col-span-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+                      <span>Full written estimates provided following clinical consultation.</span>
                       <Link
                         href="/treatments"
-                        className="text-brass hover:underline font-semibold flex items-center gap-1"
+                        className="text-cyan-700 hover:text-cyan-800 font-bold flex items-center gap-1 underline"
                       >
                         View all treatments &rarr;
                       </Link>
@@ -181,8 +181,8 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/new-patients"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/new-patients' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/new-patients' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 {isLab ? 'Referrals' : 'New Patients'}
@@ -190,8 +190,8 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/fees"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/fees' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/fees' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 Fees
@@ -199,8 +199,8 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/team"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/team' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/team' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 Our Team
@@ -208,31 +208,31 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/emergency-dentist"
-                className={`px-3 py-2 text-sm font-medium transition-colors flex items-center gap-1 ${
-                  pathname === '/emergency-dentist' ? 'text-brass font-semibold' : 'text-ivory/90 hover:text-brass'
+                className={`text-sm font-bold transition-colors flex items-center gap-1 ${
+                  pathname === '/emergency-dentist' ? 'text-cyan-700' : 'text-slate-800 hover:text-cyan-700'
                 }`}
               >
-                <AlertCircle className="w-3.5 h-3.5 text-brass" />
+                <AlertCircle className="w-4 h-4 text-cyan-600" />
                 Emergency
               </Link>
 
               <Link
                 href="/contact"
-                className={`px-3 py-2 text-sm font-medium transition-colors hover:text-brass ${
-                  pathname === '/contact' ? 'text-brass font-semibold' : 'text-ivory/90'
+                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                  pathname === '/contact' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
                 Contact
               </Link>
             </nav>
 
-            {/* Header Right CTAs */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Desktop Actions */}
+            <div className="hidden lg:flex items-center gap-5">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-2 text-ivory/90 hover:text-brass transition-colors text-sm font-medium"
+                className="flex items-center gap-2 text-slate-950 hover:text-cyan-700 transition-colors text-sm font-bold"
               >
-                <div className="w-8.5 h-8.5 rounded-full bg-navy-800 border border-navy-700 flex items-center justify-center text-brass">
+                <div className="w-8.5 h-8.5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-cyan-700">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 <span>{practiceConfig.phone}</span>
@@ -240,25 +240,25 @@ export const Header: React.FC = () => {
 
               <Link
                 href={practiceConfig.bookingLink}
-                className="bg-gradient-to-r from-brass via-brass-light to-brass text-navy-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-all duration-300 shadow-glow-brass hover:scale-[1.02] flex items-center gap-2"
+                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-sm hover:scale-[1.02] flex items-center gap-2"
               >
-                <Calendar className="w-4 h-4 text-navy-950" />
+                <Calendar className="w-4 h-4 text-cyan-300" />
                 <span>{primaryCtaText}</span>
               </Link>
             </div>
 
-            {/* Mobile Actions Header */}
+            {/* Mobile Navigation Controls */}
             <div className="flex lg:hidden items-center gap-2">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="w-10 h-10 rounded-xl bg-gradient-to-r from-brass to-brass-light text-navy-950 flex items-center justify-center font-bold shadow-soft"
+                className="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-bold shadow-sm"
                 aria-label="Call Practice"
               >
                 <Phone className="w-5 h-5" />
               </a>
               <button
                 onClick={() => setMobileNavOpen(!mobileNavOpen)}
-                className="w-10 h-10 rounded-xl bg-navy-800 border border-navy-700 text-ivory flex items-center justify-center"
+                className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 text-slate-900 flex items-center justify-center"
                 aria-label={mobileNavOpen ? 'Close Menu' : 'Open Menu'}
                 aria-expanded={mobileNavOpen}
               >
