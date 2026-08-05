@@ -70,21 +70,21 @@ export const Header: React.FC = () => {
             : 'bg-white text-slate-900 py-4.5 border-b border-slate-200'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-4">
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-3 group focus:outline-none rounded-lg"
+              className="flex items-center gap-3 group focus:outline-none rounded-lg shrink-0"
             >
               <div className="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-serif font-bold text-xl shadow-sm group-hover:scale-105 transition-all">
                 <span>S</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg font-bold text-slate-950 tracking-tight group-hover:text-cyan-700 transition-colors">
+                <span className="font-serif text-base sm:text-lg font-bold text-slate-950 tracking-tight group-hover:text-cyan-700 transition-colors whitespace-nowrap">
                   {practiceConfig.name}
                 </span>
-                <span className="text-[11px] text-slate-600 font-sans tracking-wide uppercase font-semibold">
+                <span className="text-[10px] sm:text-[11px] text-slate-600 font-sans tracking-wide uppercase font-semibold whitespace-nowrap">
                   {isLab
                     ? 'Dental Prosthetics Lab'
                     : isOrtho
@@ -96,11 +96,11 @@ export const Header: React.FC = () => {
               </div>
             </Link>
 
-            {/* Clean Desktop Navigation Bar */}
-            <nav className="hidden lg:flex items-center space-x-7" aria-label="Main Navigation">
+            {/* Clean Desktop Navigation Bar (Single Line, No Wrapping) */}
+            <nav className="hidden xl:flex items-center space-x-5 2xl:space-x-7 shrink-0" aria-label="Main Navigation">
               <Link
                 href="/"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -109,7 +109,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/about"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/about' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
               >
                 <Link
                   href="/treatments"
-                  className={`text-sm font-bold flex items-center gap-1 transition-colors hover:text-cyan-700 ${
+                  className={`text-sm font-bold whitespace-nowrap flex items-center gap-1 transition-colors hover:text-cyan-700 ${
                     pathname.startsWith('/treatments') ? 'text-cyan-700' : 'text-slate-800'
                   }`}
                   aria-expanded={megaMenuOpen}
@@ -181,7 +181,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/new-patients"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/new-patients' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -190,7 +190,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/fees"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/fees' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -199,7 +199,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/team"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/team' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -208,7 +208,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/emergency-dentist"
-                className={`text-sm font-bold transition-colors flex items-center gap-1 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors flex items-center gap-1 ${
                   pathname === '/emergency-dentist' ? 'text-cyan-700' : 'text-slate-800 hover:text-cyan-700'
                 }`}
               >
@@ -218,7 +218,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href="/contact"
-                className={`text-sm font-bold transition-colors hover:text-cyan-700 ${
+                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
                   pathname === '/contact' ? 'text-cyan-700' : 'text-slate-800'
                 }`}
               >
@@ -226,13 +226,13 @@ export const Header: React.FC = () => {
               </Link>
             </nav>
 
-            {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center gap-5">
+            {/* Desktop Actions (Separated with Left Border Line) */}
+            <div className="hidden lg:flex items-center gap-5 shrink-0 pl-4 border-l border-slate-200">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-2 text-slate-950 hover:text-cyan-700 transition-colors text-sm font-bold"
+                className="flex items-center gap-2 text-slate-950 hover:text-cyan-700 transition-colors text-sm font-bold whitespace-nowrap"
               >
-                <div className="w-8.5 h-8.5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-cyan-700">
+                <div className="w-8.5 h-8.5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-cyan-700 shrink-0">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 <span>{practiceConfig.phone}</span>
@@ -240,7 +240,7 @@ export const Header: React.FC = () => {
 
               <Link
                 href={practiceConfig.bookingLink}
-                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-sm hover:scale-[1.02] flex items-center gap-2"
+                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-sm hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap"
               >
                 <Calendar className="w-4 h-4 text-cyan-300" />
                 <span>{primaryCtaText}</span>
@@ -248,7 +248,7 @@ export const Header: React.FC = () => {
             </div>
 
             {/* Mobile Navigation Controls */}
-            <div className="flex lg:hidden items-center gap-2">
+            <div className="flex xl:hidden items-center gap-2">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
                 className="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-bold shadow-sm"
