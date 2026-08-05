@@ -50,17 +50,17 @@ export const WhyChooseUs: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-ivory text-charcoal relative overflow-hidden">
+    <section className="py-24 bg-slate-50 text-slate-900 relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
-          <span className="text-xs font-semibold text-gradient-teal uppercase tracking-widest block">
+          <span className="text-xs font-bold text-cyan-700 uppercase tracking-widest block">
             Why Patients Choose Us
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight">
             High-standard clinical care delivered with genuine consideration.
           </h2>
-          <p className="text-charcoal-muted text-base">
+          <p className="text-slate-700 text-base font-normal">
             We hold ourselves to strict clinical standards while maintaining a warm, welcoming practice environment.
           </p>
         </div>
@@ -75,16 +75,16 @@ export const WhyChooseUs: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl bg-white border border-stone-dark/30 shadow-soft hover:shadow-medium transition-all space-y-4 group"
+              className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-4 group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal/15 to-brass/15 border border-teal/20 flex items-center justify-center text-teal group-hover:bg-gradient-to-br group-hover:from-teal group-hover:to-teal-dark group-hover:text-ivory transition-all shadow-soft">
+              <div className="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-200 flex items-center justify-center text-cyan-700 group-hover:bg-cyan-700 group-hover:text-white transition-all shadow-sm">
                 <reason.icon className="w-6 h-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-serif font-bold text-lg text-navy-900 group-hover:text-teal transition-colors">
+                <h3 className="font-serif font-bold text-lg text-slate-950 group-hover:text-cyan-800 transition-colors">
                   {reason.title}
                 </h3>
-                <p className="text-xs text-charcoal-muted leading-relaxed">
+                <p className="text-xs text-slate-700 leading-relaxed font-normal">
                   {reason.description}
                 </p>
               </div>
@@ -92,40 +92,40 @@ export const WhyChooseUs: React.FC = () => {
           ))}
         </div>
 
-        {/* Factual Gradient Stats Panel */}
+        {/* Factual Stats Panel */}
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-animated-gradient text-ivory rounded-3xl p-8 border-2 border-brass/30 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center shadow-elevated"
+          className="bg-cyan-950 text-white rounded-3xl p-8 border border-white/10 grid grid-cols-2 lg:grid-cols-4 gap-6 text-center shadow-xl"
         >
           <div className="space-y-1">
-            <span className="font-serif font-bold text-3xl sm:text-4xl text-gradient-brass block">
+            <span className="font-serif font-bold text-3xl sm:text-4xl text-cyan-300 block">
               {practiceConfig.yearsEstablished}+ Years
             </span>
-            <p className="text-xs text-sage">Serving our local community</p>
+            <p className="text-xs text-cyan-100 font-medium">Serving our local community</p>
           </div>
 
-          <div className="space-y-1 border-l border-navy-700/60 pl-4">
-            <span className="font-serif font-bold text-3xl sm:text-4xl text-gradient-brass block">
+          <div className="space-y-1 border-l border-white/10 pl-4">
+            <span className="font-serif font-bold text-3xl sm:text-4xl text-cyan-300 block">
               {practiceConfig.googleRating} / 5.0
             </span>
-            <p className="text-xs text-sage">Google Rating ({practiceConfig.reviewCount}+ reviews)</p>
+            <p className="text-xs text-cyan-100 font-medium">Google Rating ({practiceConfig.reviewCount}+ reviews)</p>
           </div>
 
-          <div className="space-y-1 border-l border-navy-700/60 pl-4">
-            <span className="font-serif font-bold text-3xl sm:text-4xl text-gradient-brass block">
+          <div className="space-y-1 border-l border-white/10 pl-4">
+            <span className="font-serif font-bold text-3xl sm:text-4xl text-cyan-300 block">
               100%
             </span>
-            <p className="text-xs text-sage">GDC Registered Clinicians</p>
+            <p className="text-xs text-cyan-100 font-medium">GDC Registered Clinicians</p>
           </div>
 
-          <div className="space-y-1 border-l border-navy-700/60 pl-4">
-            <span className="font-serif font-bold text-3xl sm:text-4xl text-gradient-brass block">
+          <div className="space-y-1 border-l border-white/10 pl-4">
+            <span className="font-serif font-bold text-3xl sm:text-4xl text-cyan-300 block">
               {practiceConfig.acceptingNewPatients ? 'Open' : 'Full'}
             </span>
-            <p className="text-xs text-sage">New patient registration</p>
+            <p className="text-xs text-cyan-100 font-medium">New patient registration</p>
           </div>
         </motion.div>
       </div>

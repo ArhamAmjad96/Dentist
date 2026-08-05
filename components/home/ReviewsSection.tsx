@@ -10,30 +10,30 @@ import { motion } from 'framer-motion';
 
 export const ReviewsSection: React.FC = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-ivory to-stone/30 text-charcoal relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 relative overflow-hidden border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header with Google Badge */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-stone-dark/20 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-slate-200 pb-8">
           <div className="space-y-2 max-w-2xl">
-            <span className="text-xs font-semibold text-gradient-teal uppercase tracking-widest block">
+            <span className="text-xs font-bold text-cyan-700 uppercase tracking-widest block">
               Patient Feedback & Testimonials
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-navy-900 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight">
               What Our Patients Say
             </h2>
-            <p className="text-charcoal-muted text-base">
+            <p className="text-slate-700 text-base font-normal">
               Read verified feedback from patients who have experienced our clinical care and practice environment.
             </p>
           </div>
 
           {/* Google Summary Badge */}
-          <div className="p-5 rounded-2xl bg-white/90 backdrop-blur border border-stone-dark/30 shadow-medium flex items-center gap-4 shrink-0">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-4 shrink-0">
             <div className="space-y-0.5">
-              <div className="flex items-center gap-1 text-brass font-bold text-lg">
-                <Star className="w-4.5 h-4.5 fill-brass text-brass" />
-                <span className="text-gradient-brass">{practiceConfig.googleRating} / 5.0</span>
+              <div className="flex items-center gap-1 text-cyan-700 font-bold text-lg">
+                <Star className="w-4.5 h-4.5 fill-cyan-500 text-cyan-500" />
+                <span className="text-slate-950">{practiceConfig.googleRating} / 5.0</span>
               </div>
-              <span className="text-xs text-charcoal-muted block">
+              <span className="text-xs text-slate-600 block font-medium">
                 {practiceConfig.reviewCount}+ Google Reviews
               </span>
             </div>
@@ -41,7 +41,7 @@ export const ReviewsSection: React.FC = () => {
               href={practiceConfig.googleReviewLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-navy-900 hover:bg-navy-800 text-ivory font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-soft flex items-center gap-1.5 hover:scale-[1.02]"
+              className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-sm flex items-center gap-1.5 hover:scale-[1.02]"
             >
               <span>View All</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -59,37 +59,37 @@ export const ReviewsSection: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               whileHover={{ y: -5 }}
-              className="p-6 rounded-2xl bg-white border border-stone-dark/30 shadow-soft hover:shadow-medium transition-all flex flex-col justify-between space-y-4"
+              className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className="flex text-brass gap-0.5">
+                  <div className="flex text-cyan-500 gap-0.5">
                     {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-brass text-brass" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-cyan-500 text-cyan-500" />
                     ))}
                   </div>
-                  <span className="text-[10px] text-charcoal-muted font-bold bg-stone/60 px-2 py-0.5 rounded">
+                  <span className="text-[10px] text-slate-700 font-bold bg-slate-100 px-2 py-0.5 rounded">
                     {review.source}
                   </span>
                 </div>
 
-                <Quote className="w-6 h-6 text-teal/40" />
+                <Quote className="w-6 h-6 text-cyan-600/40" />
 
-                <p className="text-xs text-charcoal-muted italic leading-relaxed">
+                <p className="text-xs text-slate-700 italic leading-relaxed font-normal">
                   “{review.comment}”
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-stone-dark/20 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                 <div>
-                  <span className="font-serif font-bold text-navy-900 block">
+                  <span className="font-serif font-bold text-slate-950 block">
                     {review.author}
                   </span>
-                  <span className="text-[11px] text-teal font-medium">
+                  <span className="text-[11px] text-cyan-700 font-semibold">
                     {review.treatment}
                   </span>
                 </div>
-                <span className="text-[10px] text-charcoal-muted">{review.date}</span>
+                <span className="text-[10px] text-slate-500 font-medium">{review.date}</span>
               </div>
             </motion.div>
           ))}
