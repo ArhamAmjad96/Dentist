@@ -46,7 +46,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-slate-900 text-white overflow-hidden pt-12 pb-20 lg:py-28 border-b border-cyan-200">
+    <section className="relative bg-slate-950 text-white overflow-hidden pt-12 pb-20 lg:py-28 border-b border-slate-800">
       {/* Background HTML5 Video Layer with Poster Fallback */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -64,12 +64,12 @@ export const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: High-Contrast Frosted Glass Card Container */}
+          {/* Left Column: Clean High-Contrast Glass Card Container (No Blue Borders) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 bg-cyan-950/90 backdrop-blur-2xl border-2 border-cyan-400/50 p-8 sm:p-10 rounded-3xl shadow-glow-cyan space-y-6"
+            className="lg:col-span-7 bg-cyan-950/90 backdrop-blur-2xl border border-white/10 p-8 sm:p-10 rounded-3xl shadow-2xl space-y-6"
           >
             {/* Eyebrow & Status Badge */}
             <motion.div 
@@ -78,12 +78,12 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="flex flex-wrap items-center gap-3"
             >
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-cyan-400 text-cyan-950 uppercase tracking-wider shadow-soft">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-cyan-500 text-cyan-950 uppercase tracking-wider shadow-soft">
                 <Sparkles className="w-3.5 h-3.5 text-cyan-950" />
                 {eyebrow}
               </span>
 
-              <span className="inline-flex items-center gap-1 text-xs text-white bg-cyan-900/90 backdrop-blur px-3.5 py-1.5 rounded-full border border-cyan-600 font-medium">
+              <span className="inline-flex items-center gap-1 text-xs text-white bg-cyan-900/90 backdrop-blur px-3.5 py-1.5 rounded-full border border-white/20 font-medium">
                 <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
                 {practiceConfig.status === 'private'
                   ? 'Private Clinic'
@@ -93,7 +93,7 @@ export const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            {/* Main Headline - Crisp White with Vibrant Electric Cyan Shimmer */}
+            {/* Main Headline - Crisp White */}
             <motion.h1 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -101,13 +101,13 @@ export const Hero: React.FC = () => {
               className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12]"
             >
               Modern dentistry with a{' '}
-              <span className="text-cyan-300 italic font-semibold drop-shadow-sm">
+              <span className="text-cyan-300 italic font-semibold">
                 calm, personal
               </span>{' '}
               approach.
             </motion.h1>
 
-            {/* Supporting Copy - High Contrast Light Ice Cyan */}
+            {/* Supporting Copy */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -126,7 +126,7 @@ export const Hero: React.FC = () => {
             >
               <Link
                 href={practiceConfig.bookingLink}
-                className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-400 text-cyan-950 font-bold px-7 py-4 rounded-xl text-base transition-all duration-300 shadow-glow-cyan hover:scale-[1.03] flex items-center gap-2 group"
+                className="bg-gradient-to-r from-cyan-400 via-cyan-300 to-cyan-400 text-cyan-950 font-bold px-7 py-4 rounded-xl text-base transition-all duration-300 shadow-lg hover:scale-[1.03] flex items-center gap-2 group"
               >
                 <Calendar className="w-5 h-5 text-cyan-950" />
                 <span>{primaryCta}</span>
@@ -135,7 +135,7 @@ export const Hero: React.FC = () => {
 
               <Link
                 href="/treatments"
-                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl text-base border border-white/30 transition-all duration-300 hover:scale-[1.02]"
+                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-xl text-base border border-white/20 transition-all duration-300 hover:scale-[1.02]"
               >
                 {isLab ? 'Explore Lab Services' : 'Explore Treatments'}
               </Link>
@@ -143,7 +143,7 @@ export const Hero: React.FC = () => {
               {/* Sound Toggle Control Button */}
               <button
                 onClick={toggleSound}
-                className="p-3.5 rounded-xl bg-white/10 text-cyan-300 hover:text-white border border-cyan-400/40 transition-all hover:scale-105 flex items-center gap-2 text-xs font-semibold"
+                className="p-3.5 rounded-xl bg-white/10 text-cyan-300 hover:text-white border border-white/20 transition-all hover:scale-105 flex items-center gap-2 text-xs font-semibold"
                 title={isMuted ? "Unmute background video sound" : "Mute background video sound"}
               >
                 {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-cyan-400 animate-pulse" />}
@@ -152,7 +152,7 @@ export const Hero: React.FC = () => {
             </motion.div>
 
             {/* Hero Reassurance Bullet Line */}
-            <div className="pt-4 border-t border-cyan-800/80 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-cyan-100 font-medium">
+            <div className="pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-cyan-100 font-medium">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>
@@ -171,12 +171,12 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* High Contrast Trust Stats Panel */}
+            {/* Clean Trust Stats Panel (No Blue Borders) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="bg-cyan-900/90 border border-cyan-400/40 rounded-2xl p-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center sm:text-left shadow-soft"
+              className="bg-cyan-900/90 border border-white/10 rounded-2xl p-5 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center sm:text-left shadow-lg"
             >
               {/* Stat 1: Google Rating */}
               <div className="space-y-0.5">
@@ -190,33 +190,33 @@ export const Hero: React.FC = () => {
               </div>
 
               {/* Stat 2: GDC Registration */}
-              <div className="space-y-0.5 border-l border-cyan-800 pl-3">
+              <div className="space-y-0.5 border-l border-white/10 pl-3">
                 <span className="font-bold text-white text-sm block">GDC Registered</span>
                 <p className="text-[11px] text-cyan-200">Fully qualified UK team</p>
               </div>
 
               {/* Stat 3: Accessibility */}
-              <div className="space-y-0.5 border-l border-cyan-800 pl-3">
+              <div className="space-y-0.5 border-l border-white/10 pl-3">
                 <span className="font-bold text-white text-sm block">Step-Free Access</span>
                 <p className="text-[11px] text-cyan-200">Wheelchair accessible</p>
               </div>
 
               {/* Stat 4: Finance */}
-              <div className="space-y-0.5 border-l border-cyan-800 pl-3">
+              <div className="space-y-0.5 border-l border-white/10 pl-3">
                 <span className="font-bold text-cyan-300 font-serif text-base block">0% Finance</span>
                 <p className="text-[11px] text-cyan-200">Subject to status & plan</p>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: High Contrast Procedure Frame */}
+          {/* Right Column: Clean Procedure Card (No Blue Borders) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-3xl overflow-hidden shadow-glow-cyan border-2 border-cyan-400 group bg-slate-900">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/20 group bg-slate-900">
               <video
                 poster={practiceConfig.images.dentistWithPatient}
                 autoPlay
@@ -239,7 +239,7 @@ export const Hero: React.FC = () => {
               <motion.div 
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute bottom-4 left-4 right-4 bg-cyan-950/90 backdrop-blur-md p-4 rounded-2xl border-2 border-cyan-400/50 flex items-center justify-between shadow-glow-cyan"
+                className="absolute bottom-4 left-4 right-4 bg-cyan-950/90 backdrop-blur-md p-4 rounded-2xl border border-white/20 flex items-center justify-between shadow-xl"
               >
                 <div>
                   <p className="text-xs font-serif font-bold text-white">

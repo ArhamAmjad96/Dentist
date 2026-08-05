@@ -30,15 +30,12 @@ export const FeaturedTreatments: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-cyan-50/40 to-white text-slate-900 relative border-b border-cyan-100 overflow-hidden">
-      {/* Subtle Background Glow */}
-      <div className="mesh-glow-cyan top-1/4 -right-40 opacity-30" />
-
+    <section className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white text-slate-900 relative border-b border-slate-200 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-cyan-100 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 border-b border-slate-200 pb-8">
           <div className="space-y-3 max-w-2xl">
-            <span className="text-xs font-bold text-gradient-cyan uppercase tracking-widest block">
+            <span className="text-xs font-bold text-cyan-600 uppercase tracking-widest block">
               {isLab ? 'Laboratory Capabilities' : 'Comprehensive Clinical Care'}
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
@@ -60,7 +57,7 @@ export const FeaturedTreatments: React.FC = () => {
           </Link>
         </div>
 
-        {/* Treatment Cards Animated Grid */}
+        {/* Treatment Cards Animated Grid (Clean Neutral Borders) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -73,11 +70,11 @@ export const FeaturedTreatments: React.FC = () => {
               key={treatment.slug}
               variants={itemVariants}
               whileHover={{ y: -6 }}
-              className="glass-card-white rounded-2xl overflow-hidden transition-all duration-300 shadow-soft-cyan hover:shadow-medium-cyan flex flex-col justify-between group border border-cyan-200/60 bg-white"
+              className="bg-white rounded-2xl overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between group border border-slate-200"
             >
               {/* Card Image with Gradient Overlay */}
               <div>
-                <div className="relative h-52 w-full overflow-hidden bg-cyan-950">
+                <div className="relative h-52 w-full overflow-hidden bg-slate-900">
                   <Image
                     src={treatment.image}
                     alt={treatment.name}
@@ -86,7 +83,7 @@ export const FeaturedTreatments: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
-                  <div className="absolute top-3 left-3 bg-gradient-to-r from-cyan-600 to-cyan-500 text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-soft uppercase tracking-wide">
+                  <div className="absolute top-3 left-3 bg-cyan-600 text-white px-3 py-1 rounded-full text-[11px] font-bold shadow-sm uppercase tracking-wide">
                     {treatment.category}
                   </div>
                 </div>
@@ -103,7 +100,7 @@ export const FeaturedTreatments: React.FC = () => {
                   </div>
 
                   {/* Suitable For Summary */}
-                  <div className="space-y-1.5 pt-2 border-t border-cyan-100">
+                  <div className="space-y-1.5 pt-2 border-t border-slate-100">
                     <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider block">
                       Ideal For:
                     </span>
@@ -116,19 +113,19 @@ export const FeaturedTreatments: React.FC = () => {
               </div>
 
               {/* Price & CTA Footer */}
-              <div className="p-6 pt-0 border-t border-cyan-100 flex items-center justify-between">
+              <div className="p-6 pt-0 border-t border-slate-100 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 block uppercase tracking-wider">
                     Guide Price
                   </span>
-                  <span className="text-sm font-bold text-gradient-cyan">
+                  <span className="text-sm font-bold text-cyan-700">
                     From {formatPrice(treatment.priceFrom)}
                   </span>
                 </div>
 
                 <Link
                   href={`/treatments/${treatment.slug}`}
-                  className="inline-flex items-center gap-1.5 text-white font-bold text-xs py-2 px-4 rounded-xl bg-gradient-to-r from-cyan-600 to-cyan-500 hover:from-cyan-500 hover:to-cyan-400 transition-all shadow-soft-cyan group-hover:shadow-medium-cyan"
+                  className="inline-flex items-center gap-1.5 text-white font-bold text-xs py-2 px-4 rounded-xl bg-cyan-600 hover:bg-cyan-500 transition-all shadow-sm"
                 >
                   <span>Learn More</span>
                   <ArrowRight className="w-3.5 h-3.5" />

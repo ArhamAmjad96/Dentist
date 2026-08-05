@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 
 export const NervousPatientBanner: React.FC = () => {
   return (
-    <section className="py-20 bg-navy-950 text-ivory border-y border-navy-800 relative overflow-hidden">
+    <section className="py-20 bg-cyan-950 text-white border-y border-slate-800 relative overflow-hidden">
       {/* Section Background HTML5 Video Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -22,11 +22,8 @@ export const NervousPatientBanner: React.FC = () => {
         >
           <source src={practiceConfig.videos.clinicTour} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/90 to-navy-950/95" />
+        <div className="absolute inset-0 bg-slate-950/80" />
       </div>
-
-      {/* Glow */}
-      <div className="mesh-glow-brass top-1/2 left-10 opacity-30 z-1" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -34,46 +31,46 @@ export const NervousPatientBanner: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-card-dark border-2 border-brass/40 rounded-3xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-glow-brass"
+          className="bg-cyan-900/90 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-xl"
         >
           <div className="lg:col-span-8 space-y-4">
-            <div className="flex items-center gap-2 text-brass text-xs font-semibold uppercase tracking-wider">
-              <Heart className="w-4 h-4 text-brass animate-pulse" />
+            <div className="flex items-center gap-2 text-cyan-300 text-xs font-semibold uppercase tracking-wider">
+              <Heart className="w-4 h-4 text-cyan-300 animate-pulse" />
               <span>Dedicated Dental Anxiety Support</span>
             </div>
 
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-ivory">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
               Nervous about visiting the dentist? You are in{' '}
-              <span className="text-gradient-brass italic">safe, considerate hands.</span>
+              <span className="text-cyan-300 italic">safe, considerate hands.</span>
             </h2>
 
-            <p className="text-sage text-sm leading-relaxed max-w-2xl">
+            <p className="text-cyan-100 text-sm leading-relaxed max-w-2xl">
               We understand that dental anxiety is common and very real. Our clinical team takes a gentle, non-judgmental approach, ensuring you feel completely in control throughout your time with us.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-ivory/90">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs text-white">
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-brass shrink-0" />
+                <Check className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Discuss concerns before sitting in the dental chair</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-brass shrink-0" />
+                <Check className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Agree on a clear hand signal to stop at any time</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-brass shrink-0" />
+                <Check className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Move at your pace with no pressure</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-brass shrink-0" />
+                <Check className="w-4 h-4 text-cyan-400 shrink-0" />
                 <span>Clear step-by-step explanations beforehand</span>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-center space-y-4">
-            <div className="p-4 rounded-xl bg-navy-950/90 border border-navy-700 text-xs text-sage space-y-1">
-              <span className="font-semibold text-ivory block">Sedation Options:</span>
+            <div className="p-4 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-cyan-100 space-y-1">
+              <span className="font-semibold text-white block">Sedation Options:</span>
               <p>
                 Dental sedation options can be assessed during consultation for highly anxious patients.
               </p>
@@ -81,7 +78,7 @@ export const NervousPatientBanner: React.FC = () => {
 
             <Link
               href="/nervous-patients"
-              className="bg-gradient-to-r from-brass via-brass-light to-brass text-navy-950 font-bold px-6 py-3.5 rounded-xl text-sm transition-all shadow-glow-brass hover:scale-[1.02] inline-flex items-center gap-2"
+              className="bg-cyan-400 text-cyan-950 font-bold px-6 py-3.5 rounded-xl text-sm transition-all hover:bg-cyan-300 shadow-md inline-flex items-center gap-2"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Tell Us How We Can Help</span>
