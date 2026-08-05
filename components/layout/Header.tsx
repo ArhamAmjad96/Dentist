@@ -34,7 +34,7 @@ export const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
+      if (window.window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -50,7 +50,7 @@ export const Header: React.FC = () => {
   }, [pathname]);
 
   const primaryCtaText = isLab
-    ? 'Submit Laboratory Referral'
+    ? 'Submit Referral'
     : 'Book an Appointment';
 
   const categories = [
@@ -66,18 +66,18 @@ export const Header: React.FC = () => {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-md py-3.5 border-b border-slate-200'
-            : 'bg-white text-slate-900 py-4.5 border-b border-slate-200'
+            ? 'bg-white/95 backdrop-blur-md shadow-md py-3 border-b border-slate-200'
+            : 'bg-white text-slate-900 py-4 border-b border-slate-200'
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            {/* Logo */}
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-6">
+            {/* Left Side: Favicon & Clinic Name */}
             <Link
               href="/"
               className="flex items-center gap-3 group focus:outline-none rounded-lg shrink-0"
             >
-              <div className="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-serif font-bold text-xl shadow-sm group-hover:scale-105 transition-all">
+              <div className="w-10 h-10 rounded-2xl bg-cyan-600 text-white flex items-center justify-center font-serif font-bold text-xl shadow-md group-hover:scale-105 transition-all">
                 <span>S</span>
               </div>
               <div className="flex flex-col">
@@ -86,7 +86,7 @@ export const Header: React.FC = () => {
                 </span>
                 <span className="text-[10px] sm:text-[11px] text-slate-600 font-sans tracking-wide uppercase font-semibold whitespace-nowrap">
                   {isLab
-                    ? 'Dental Prosthetics Lab'
+                    ? 'Dental Laboratory'
                     : isOrtho
                     ? 'Specialist Orthodontics'
                     : isDenture
@@ -96,27 +96,33 @@ export const Header: React.FC = () => {
               </div>
             </Link>
 
-            {/* Clean Desktop Navigation Bar (Single Line, No Wrapping) */}
-            <nav className="hidden xl:flex items-center space-x-5 2xl:space-x-7 shrink-0" aria-label="Main Navigation">
+            {/* Middle Section: Button Pills for Navigation Items with Space Between */}
+            <nav className="hidden xl:flex items-center gap-2.5 2xl:gap-3 shrink-0" aria-label="Main Navigation">
+              {/* Home Pill Button */}
               <Link
                 href="/"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 Home
               </Link>
 
+              {/* About Pill Button */}
               <Link
                 href="/about"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/about' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/about'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 About
               </Link>
 
-              {/* Treatments Dropdown Menu */}
+              {/* Treatments Pill Button (with Dropdown) */}
               <div
                 className="relative"
                 onMouseEnter={() => setMegaMenuOpen(true)}
@@ -124,15 +130,17 @@ export const Header: React.FC = () => {
               >
                 <Link
                   href="/treatments"
-                  className={`text-sm font-bold whitespace-nowrap flex items-center gap-1 transition-colors hover:text-cyan-700 ${
-                    pathname.startsWith('/treatments') ? 'text-cyan-700' : 'text-slate-800'
+                  className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
+                    pathname.startsWith('/treatments')
+                      ? 'bg-cyan-600 text-white shadow-md'
+                      : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                   }`}
                   aria-expanded={megaMenuOpen}
                 >
-                  {isLab ? 'Lab Services' : 'Treatments'}
+                  <span>{isLab ? 'Lab Services' : 'Treatments'}</span>
                   <ChevronDown
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      megaMenuOpen ? 'rotate-180 text-cyan-700' : 'text-slate-500'
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      megaMenuOpen ? 'rotate-180' : ''
                     }`}
                   />
                 </Link>
@@ -179,60 +187,75 @@ export const Header: React.FC = () => {
                 )}
               </div>
 
+              {/* New Patients Pill Button */}
               <Link
                 href="/new-patients"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/new-patients' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/new-patients'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 {isLab ? 'Referrals' : 'New Patients'}
               </Link>
 
+              {/* Fees Pill Button */}
               <Link
                 href="/fees"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/fees' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/fees'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 Fees
               </Link>
 
+              {/* Our Team Pill Button */}
               <Link
                 href="/team"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/team' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/team'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 Our Team
               </Link>
 
+              {/* Emergency Pill Button */}
               <Link
                 href="/emergency-dentist"
-                className={`text-sm font-bold whitespace-nowrap transition-colors flex items-center gap-1 ${
-                  pathname === '/emergency-dentist' ? 'text-cyan-700' : 'text-slate-800 hover:text-cyan-700'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
+                  pathname === '/emergency-dentist'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
-                <AlertCircle className="w-4 h-4 text-cyan-600" />
-                Emergency
+                <AlertCircle className="w-3.5 h-3.5 text-cyan-600 group-hover:text-white" />
+                <span>Emergency</span>
               </Link>
 
+              {/* Contact Pill Button */}
               <Link
                 href="/contact"
-                className={`text-sm font-bold whitespace-nowrap transition-colors hover:text-cyan-700 ${
-                  pathname === '/contact' ? 'text-cyan-700' : 'text-slate-800'
+                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                  pathname === '/contact'
+                    ? 'bg-cyan-600 text-white shadow-md'
+                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
                 }`}
               >
                 Contact
               </Link>
             </nav>
 
-            {/* Desktop Actions (Separated with Left Border Line) */}
-            <div className="hidden lg:flex items-center gap-5 shrink-0 pl-4 border-l border-slate-200">
+            {/* Right Side: Phone Badge & Book an Appointment Button */}
+            <div className="hidden lg:flex items-center gap-4 shrink-0">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-2 text-slate-950 hover:text-cyan-700 transition-colors text-sm font-bold whitespace-nowrap"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-slate-950 hover:text-cyan-700 transition-all text-xs font-bold whitespace-nowrap shadow-sm"
               >
-                <div className="w-8.5 h-8.5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-cyan-700 shrink-0">
+                <div className="w-6.5 h-6.5 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-700 shrink-0">
                   <Phone className="w-3.5 h-3.5" />
                 </div>
                 <span>{practiceConfig.phone}</span>
@@ -240,14 +263,14 @@ export const Header: React.FC = () => {
 
               <Link
                 href={practiceConfig.bookingLink}
-                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all duration-300 shadow-sm hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap"
+                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-2.5 rounded-2xl text-xs sm:text-sm transition-all duration-300 shadow-md hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap"
               >
                 <Calendar className="w-4 h-4 text-cyan-300" />
                 <span>{primaryCtaText}</span>
               </Link>
             </div>
 
-            {/* Mobile Navigation Controls */}
+            {/* Mobile Controls */}
             <div className="flex xl:hidden items-center gap-2">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
