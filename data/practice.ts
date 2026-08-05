@@ -113,8 +113,8 @@ export interface PracticeConfig {
 }
 
 export const practiceConfig: PracticeConfig = {
-  name: "St. James Dental & Implant Clinic",
-  shortName: "St. James Dental",
+  name: "St. James Clinic",
+  shortName: "St. James Clinic",
   type: "private",
   status: "private",
   tagline: "Considerate, evidence-led dental care in London",

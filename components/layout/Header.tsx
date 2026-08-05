@@ -7,18 +7,16 @@ import { usePathname } from 'next/navigation';
 import { practiceConfig } from '@/data/practice';
 import { treatmentsData } from '@/data/treatments';
 import {
-  Phone,
   Calendar,
   ChevronDown,
   Menu,
   X,
-  MapPin,
-  Clock,
   Sparkles,
   Shield,
   Stethoscope,
   Smile,
   AlertCircle,
+  Phone,
 } from 'lucide-react';
 import { MobileNav } from './MobileNav';
 
@@ -29,12 +27,10 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
 
   const isLab = practiceConfig.type === 'dental-laboratory';
-  const isOrtho = practiceConfig.type === 'orthodontist';
-  const isDenture = practiceConfig.type === 'denture-clinic';
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.window.scrollY > 20) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -70,9 +66,9 @@ export const Header: React.FC = () => {
             : 'bg-white text-slate-900 py-4 border-b border-slate-200'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-6">
-            {/* Left Side: Favicon & Clinic Name */}
+            {/* Left Side: Favicon & Simple Clinic Name */}
             <Link
               href="/"
               className="flex items-center gap-3 group focus:outline-none rounded-lg shrink-0"
@@ -81,27 +77,21 @@ export const Header: React.FC = () => {
                 <span>S</span>
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-base sm:text-lg font-bold text-slate-950 tracking-tight group-hover:text-cyan-700 transition-colors whitespace-nowrap">
-                  {practiceConfig.name}
+                <span className="font-serif text-lg font-bold text-slate-950 tracking-tight group-hover:text-cyan-700 transition-colors whitespace-nowrap">
+                  St. James Clinic
                 </span>
                 <span className="text-[10px] sm:text-[11px] text-slate-600 font-sans tracking-wide uppercase font-semibold whitespace-nowrap">
-                  {isLab
-                    ? 'Dental Laboratory'
-                    : isOrtho
-                    ? 'Specialist Orthodontics'
-                    : isDenture
-                    ? 'Denture Care Clinic'
-                    : `${practiceConfig.city} Clinic`}
+                  London Clinic
                 </span>
               </div>
             </Link>
 
-            {/* Middle Section: Button Pills for Navigation Items with Space Between */}
-            <nav className="hidden xl:flex items-center gap-2.5 2xl:gap-3 shrink-0" aria-label="Main Navigation">
+            {/* Middle Section: Clean Button Pills (Home, About, Treatments, Emergency, Contact) */}
+            <nav className="hidden lg:flex items-center gap-3 shrink-0" aria-label="Main Navigation">
               {/* Home Pill Button */}
               <Link
                 href="/"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                className={`px-4.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
                   pathname === '/'
                     ? 'bg-cyan-600 text-white shadow-md'
                     : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
@@ -113,7 +103,7 @@ export const Header: React.FC = () => {
               {/* About Pill Button */}
               <Link
                 href="/about"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                className={`px-4.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
                   pathname === '/about'
                     ? 'bg-cyan-600 text-white shadow-md'
                     : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
@@ -130,7 +120,7 @@ export const Header: React.FC = () => {
               >
                 <Link
                   href="/treatments"
-                  className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
+                  className={`px-4.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
                     pathname.startsWith('/treatments')
                       ? 'bg-cyan-600 text-white shadow-md'
                       : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
@@ -187,46 +177,10 @@ export const Header: React.FC = () => {
                 )}
               </div>
 
-              {/* New Patients Pill Button */}
-              <Link
-                href="/new-patients"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
-                  pathname === '/new-patients'
-                    ? 'bg-cyan-600 text-white shadow-md'
-                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
-                }`}
-              >
-                {isLab ? 'Referrals' : 'New Patients'}
-              </Link>
-
-              {/* Fees Pill Button */}
-              <Link
-                href="/fees"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
-                  pathname === '/fees'
-                    ? 'bg-cyan-600 text-white shadow-md'
-                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
-                }`}
-              >
-                Fees
-              </Link>
-
-              {/* Our Team Pill Button */}
-              <Link
-                href="/team"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
-                  pathname === '/team'
-                    ? 'bg-cyan-600 text-white shadow-md'
-                    : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
-                }`}
-              >
-                Our Team
-              </Link>
-
               {/* Emergency Pill Button */}
               <Link
                 href="/emergency-dentist"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
+                className={`px-4.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap flex items-center gap-1.5 transition-all shadow-sm ${
                   pathname === '/emergency-dentist'
                     ? 'bg-cyan-600 text-white shadow-md'
                     : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
@@ -239,7 +193,7 @@ export const Header: React.FC = () => {
               {/* Contact Pill Button */}
               <Link
                 href="/contact"
-                className={`px-4 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
+                className={`px-4.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all shadow-sm ${
                   pathname === '/contact'
                     ? 'bg-cyan-600 text-white shadow-md'
                     : 'bg-slate-100 hover:bg-cyan-600 hover:text-white text-slate-800 border border-slate-200'
@@ -249,21 +203,11 @@ export const Header: React.FC = () => {
               </Link>
             </nav>
 
-            {/* Right Side: Phone Badge & Book an Appointment Button */}
+            {/* Right Side: Book an Appointment CTA Button */}
             <div className="hidden lg:flex items-center gap-4 shrink-0">
-              <a
-                href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-slate-950 hover:text-cyan-700 transition-all text-xs font-bold whitespace-nowrap shadow-sm"
-              >
-                <div className="w-6.5 h-6.5 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-700 shrink-0">
-                  <Phone className="w-3.5 h-3.5" />
-                </div>
-                <span>{practiceConfig.phone}</span>
-              </a>
-
               <Link
                 href={practiceConfig.bookingLink}
-                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-6 py-2.5 rounded-2xl text-xs sm:text-sm transition-all duration-300 shadow-md hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap"
+                className="bg-cyan-950 hover:bg-cyan-900 text-white font-bold px-7 py-3 rounded-2xl text-sm transition-all duration-300 shadow-md hover:scale-[1.02] flex items-center gap-2 whitespace-nowrap"
               >
                 <Calendar className="w-4 h-4 text-cyan-300" />
                 <span>{primaryCtaText}</span>
@@ -271,7 +215,7 @@ export const Header: React.FC = () => {
             </div>
 
             {/* Mobile Controls */}
-            <div className="flex xl:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
                 className="w-10 h-10 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-bold shadow-sm"
