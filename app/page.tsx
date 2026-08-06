@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hero } from '@/components/home/Hero';
-import { CredibilityStrip } from '@/components/home/CredibilityStrip';
+import { TrustSlider } from '@/components/home/TrustSlider';
 import { TreatmentFinder } from '@/components/home/TreatmentFinder';
 import { SmileGallery } from '@/components/home/SmileGallery';
 import { MeetDentist } from '@/components/home/MeetDentist';
@@ -18,31 +18,31 @@ export default function HomePage() {
     <main className="bg-[#F8FAFA] min-h-screen text-[#122A38] overflow-hidden">
       <SchemaOrg schema={schema} />
 
-      {/* 1. Hero (Pearl White #F8FAFA) */}
+      {/* 1. Hero */}
       <Hero />
 
-      {/* Compact Credibility Strip (White #FFFFFF) */}
-      <CredibilityStrip />
+      {/* Premium Infinite-Scrolling Trust Slider (Replacing static strip) */}
+      <TrustSlider />
 
-      {/* 2. Treatment Finder & Core Treatments (Soft Ice Blue #E7F1F3) */}
+      {/* 2. Treatment Finder & Core Treatments */}
       <TreatmentFinder />
 
-      {/* 3. Smile Transformations (White #FFFFFF) */}
+      {/* 3. Smile Transformations */}
       <SmileGallery />
 
-      {/* 4. Dentist & Clinic Story (Midnight Navy #122A38 with White Text) */}
+      {/* 4. Dentist & Clinic Story */}
       <MeetDentist />
 
-      {/* 5. Your Treatment Journey (Pearl White #F8FAFA) */}
+      {/* 5. Your Treatment Journey */}
       <PatientJourney />
 
-      {/* 6. Patient Stories & Reviews (Soft Ice Blue #E7F1F3) */}
+      {/* 6. Patient Stories & Reviews */}
       <Testimonials />
 
-      {/* 7. Fees, Finance & FAQs (White #FFFFFF) */}
+      {/* 7. Fees, Finance & FAQs */}
       <FeesFinanceFAQ />
 
-      {/* 8. Contact & Location (Midnight Navy #122A38) */}
+      {/* 8. Contact & Location */}
       <LocationContact />
     </main>
   );
