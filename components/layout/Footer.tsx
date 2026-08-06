@@ -4,195 +4,162 @@
 import React from 'react';
 import Link from 'next/link';
 import { practiceConfig } from '@/data/practice';
-import { treatmentsData } from '@/data/treatments';
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  ShieldCheck,
-  ExternalLink,
-  Heart,
-  AlertCircle,
-} from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Heart } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const isLab = practiceConfig.type === 'dental-laboratory';
-  const isOrtho = practiceConfig.type === 'orthodontist';
-
   return (
-    <footer className="bg-slate-950 text-white pt-16 pb-24 lg:pb-12 border-t border-slate-800">
+    <footer className="bg-[#1B1D1D] text-white pt-20 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
-          {/* Col 1: Practice Identity */}
-          <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-full bg-cyan-600 text-white flex items-center justify-center font-serif font-bold text-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+          {/* Column 1: Brand & Registration (Span 4) */}
+          <div className="lg:col-span-4 space-y-4">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[#143C3A] text-white flex items-center justify-center font-serif text-xl font-bold">
                 S
               </div>
-              <span className="font-serif text-xl font-bold text-white tracking-tight">
-                {practiceConfig.name}
+              <span className="font-serif text-2xl font-bold text-white tracking-tight">
+                St. James Clinic
               </span>
             </Link>
-            <p className="text-sm text-cyan-100 leading-relaxed max-w-sm font-normal">
+
+            <p className="text-xs text-white/70 leading-relaxed font-normal max-w-sm">
               {practiceConfig.description}
             </p>
 
-            {/* Regulatory Badge Box */}
-            <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
-              <div className="flex items-center gap-2 text-cyan-300 font-bold">
-                <ShieldCheck className="w-4 h-4 text-cyan-400" />
+            <div className="pt-2 space-y-1.5 text-xs text-white/60">
+              <p className="flex items-center gap-1.5 text-[#B8926A] font-semibold">
+                <ShieldCheck className="w-4 h-4 text-[#B8926A]" />
                 <span>{practiceConfig.cqcInfo.status}</span>
-              </div>
-              <p className="text-cyan-100 text-[11px] leading-normal font-normal">
-                Dental professionals at {practiceConfig.name} are registered and regulated by the General Dental Council (GDC).
               </p>
-              {practiceConfig.gdcNumber && (
-                <p className="text-cyan-300 font-mono text-[11px]">
-                  {practiceConfig.gdcNumber}
-                </p>
-              )}
+              <p>Principal Dentist: {practiceConfig.principalDentist.name} ({practiceConfig.principalDentist.gdcNumber})</p>
+              <p>GDC Registration: 248912 • CQC Certificate: {practiceConfig.cqcInfo.certificateNumber}</p>
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div className="space-y-3">
-            <h3 className="font-serif font-bold text-white text-base border-b border-slate-800 pb-2">
-              Practice Links
+          {/* Column 2: Clinical Treatments (Span 3) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="font-serif text-lg font-bold text-white mb-2">
+              Treatments & Services
             </h3>
-            <ul className="space-y-2 text-sm font-medium">
+            <ul className="space-y-2 text-xs font-normal text-white/70">
               <li>
-                <Link href="/" className="text-cyan-100 hover:text-white transition-colors">
-                  Home
+                <Link href="/treatments/invisalign-aligners" className="hover:text-[#B8926A] transition-colors">
+                  Invisalign Clear Aligners
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-cyan-100 hover:text-white transition-colors">
-                  About Our Clinic
+                <Link href="/treatments/dental-implants" className="hover:text-[#B8926A] transition-colors">
+                  Single & Multiple Dental Implants
                 </Link>
               </li>
               <li>
-                <Link href="/new-patients" className="text-cyan-100 hover:text-white transition-colors">
-                  {isLab ? 'Laboratory Referrals' : 'New Patient Guide'}
+                <Link href="/treatments/composite-bonding" className="hover:text-[#B8926A] transition-colors">
+                  Composite Bonding & Reshaping
                 </Link>
               </li>
               <li>
-                <Link href="/team" className="text-cyan-100 hover:text-white transition-colors">
+                <Link href="/treatments/teeth-whitening" className="hover:text-[#B8926A] transition-colors">
+                  Professional Teeth Whitening
+                </Link>
+              </li>
+              <li>
+                <Link href="/treatments/dental-checkups" className="hover:text-[#B8926A] transition-colors">
+                  Dental Examinations & Maintenance
+                </Link>
+              </li>
+              <li>
+                <Link href="/treatments/hygiene-appointments" className="hover:text-[#B8926A] transition-colors">
+                  Airflow Stain Removal Hygiene
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Patient Information (Span 2) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h3 className="font-serif text-lg font-bold text-white mb-2">
+              Patient Care
+            </h3>
+            <ul className="space-y-2 text-xs font-normal text-white/70">
+              <li>
+                <Link href="/about" className="hover:text-[#B8926A] transition-colors">
+                  About Our Practice
+                </Link>
+              </li>
+              <li>
+                <Link href="/team" className="hover:text-[#B8926A] transition-colors">
                   Our Clinical Team
                 </Link>
               </li>
               <li>
-                <Link href="/fees" className="text-cyan-100 hover:text-white transition-colors">
-                  Fee Guide & Financing
+                <Link href="/fees" className="hover:text-[#B8926A] transition-colors">
+                  Fees & 0% Finance
                 </Link>
               </li>
               <li>
-                <Link href="/emergency-dentist" className="text-cyan-300 hover:text-white transition-colors flex items-center gap-1.5 font-bold">
-                  <AlertCircle className="w-3.5 h-3.5" />
-                  Emergency Care
+                <Link href="/reviews" className="hover:text-[#B8926A] transition-colors">
+                  Smile Transformations
                 </Link>
               </li>
               <li>
-                <Link href="/nervous-patients" className="text-cyan-100 hover:text-white transition-colors">
-                  Nervous Patients
+                <Link href="/emergency-dentist" className="hover:text-[#B8926A] transition-colors">
+                  Emergency Dental Triage
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#B8926A] transition-colors">
+                  Contact & Directions
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Key Treatments */}
-          <div className="space-y-3">
-            <h3 className="font-serif font-bold text-white text-base border-b border-slate-800 pb-2">
-              {isLab ? 'Lab Services' : 'Key Treatments'}
-            </h3>
-            <ul className="space-y-2 text-sm font-medium">
-              {treatmentsData.slice(0, 6).map((t) => (
-                <li key={t.slug}>
-                  <Link
-                    href={`/treatments/${t.slug}`}
-                    className="text-cyan-100 hover:text-white transition-colors"
-                  >
-                    {t.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 4: Contact & Hours */}
-          <div className="space-y-3">
-            <h3 className="font-serif font-bold text-white text-base border-b border-slate-800 pb-2">
+          {/* Column 4: Contact & Hours (Span 3) */}
+          <div className="lg:col-span-3 space-y-3">
+            <h3 className="font-serif text-lg font-bold text-white mb-2">
               Contact & Hours
             </h3>
-            <ul className="space-y-2.5 text-xs text-cyan-100">
-              <li className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                <span className="text-white">
-                  {practiceConfig.address}, {practiceConfig.city}, {practiceConfig.postcode}
-                </span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-                <a href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`} className="text-white hover:text-cyan-300 transition-colors font-bold">
-                  {practiceConfig.phone}
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-cyan-400 shrink-0" />
-                <a href={`mailto:${practiceConfig.email}`} className="text-white hover:text-cyan-300 transition-colors">
-                  {practiceConfig.email}
-                </a>
-              </li>
-            </ul>
+            <div className="space-y-2 text-xs text-white/70">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#B8926A] shrink-0 mt-0.5" />
+                <span>{practiceConfig.address}, {practiceConfig.city}, {practiceConfig.postcode}</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-[#B8926A] shrink-0" />
+                <span>{practiceConfig.phone}</span>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-[#B8926A] shrink-0" />
+                <span>{practiceConfig.email}</span>
+              </p>
+            </div>
 
-            <div className="pt-2">
-              <span className="text-xs font-bold text-white flex items-center gap-1 mb-1">
-                <Clock className="w-3.5 h-3.5 text-cyan-400" /> Opening Hours
-              </span>
-              <ul className="text-[11px] space-y-1 text-cyan-100 font-medium">
-                {practiceConfig.openingHours.slice(0, 5).map((oh, i) => (
-                  <li key={i} className="flex justify-between">
-                    <span>{oh.day}:</span>
-                    <span className="text-white">{oh.hours}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="pt-2 text-xs text-white/60 border-t border-white/10">
+              <span className="font-bold text-white block mb-1">Opening Hours:</span>
+              <p>Mon - Thu: 08:30 – 18:00</p>
+              <p>Friday: 08:30 – 17:00</p>
+              <p>Sat - Sun: Emergency triage by appointment</p>
             </div>
           </div>
         </div>
 
-        {/* Legal & Compliance Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 text-xs text-cyan-100 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center md:text-left">
-            <p className="text-white font-medium">
-              &copy; {new Date().getFullYear()} {practiceConfig.name}. All rights reserved.
-            </p>
-            <p className="text-[11px] text-cyan-200">
-              {practiceConfig.status === 'private'
-                ? 'This is a private dental practice. NHS treatment is not currently provided.'
-                : practiceConfig.status === 'mixed'
-                ? 'We provide a combination of NHS and private treatment. Availability and eligibility may vary.'
-                : 'NHS appointment availability may change. Please contact the practice directly.'}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4 text-xs font-medium">
+        {/* Bottom Legal & Regulatory Bar */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/50 gap-4">
+          <p>© {new Date().getFullYear()} St. James Clinic London. All rights reserved. Registered in England & Wales.</p>
+          <div className="flex flex-wrap gap-6">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
             <Link href="/cookie-policy" className="hover:text-white transition-colors">
               Cookie Policy
             </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
             <Link href="/complaints" className="hover:text-white transition-colors">
               Complaints Procedure
             </Link>
-            <Link href="/accessibility" className="hover:text-white transition-colors">
-              Accessibility
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms of Use
-            </Link>
-            <Link href="/sitemap" className="hover:text-white transition-colors">
+            <Link href="/sitemap.xml" className="hover:text-white transition-colors">
               Sitemap
             </Link>
           </div>

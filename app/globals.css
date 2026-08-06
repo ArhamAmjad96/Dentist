@@ -2,135 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --font-playfair: 'Playfair Display', Georgia, serif;
-  --font-inter: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jakarta: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 body {
-  font-family: var(--font-inter);
-  background-color: #F8FDFF;
-  color: #0F172A;
+  font-family: var(--font-jakarta);
+  background-color: #F5F2EB;
+  color: #1B1D1D;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Custom Scrollbar for Cyan Theme */
+/* Custom Scrollbar for Editorial Theme */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FDFF;
+  background: #F5F2EB;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00ACC1;
-  border-radius: 5px;
+  background: #CCD6CF;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00838F;
+  background: #143C3A;
 }
 
-/* Focus Ring Customization */
+/* Accessible Focus States */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #00BCD4;
+  outline: 2px solid #143C3A;
   outline-offset: 2px;
 }
 
-/* Dynamic Cyan Gradient Text Utilities */
-.text-gradient-cyan {
-  background: linear-gradient(120deg, #00838F, #00BCD4, #00E5FF, #00ACC1, #00838F);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShimmer 4s ease infinite;
+/* Editorial Button Styling */
+.btn-primary {
+  background-color: #143C3A;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(20, 60, 58, 0.15);
 }
 
-.text-gradient-brass {
-  background: linear-gradient(120deg, #00838F, #00BCD4, #00E5FF, #00ACC1);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textShimmer 4s ease infinite;
+.btn-primary:hover {
+  background-color: #0E2A29;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(20, 60, 58, 0.25);
 }
 
-.text-gradient-teal {
-  background: linear-gradient(120deg, #006064, #0097A7, #00BCD4);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #143C3A;
+  border: 1px solid #CCD6CF;
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-@keyframes textShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.btn-secondary:hover {
+  background-color: #FAF8F5;
+  border-color: #143C3A;
+  color: #143C3A;
 }
 
-/* Clean Animated Gradient Backgrounds */
-.bg-animated-gradient {
-  background: linear-gradient(-45deg, #051C2C, #004D40, #006064, #00838F, #00BCD4);
-  background-size: 350% 350%;
-  animation: gradientShift 5s ease infinite;
+.btn-outline-light {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  padding: 0.875rem 1.75rem;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.bg-animated-gradient-cyan {
-  background: linear-gradient(-45deg, #FFFFFF, #E0F7FA, #B2EBF2, #F0FCFF);
-  background-size: 300% 300%;
-  animation: gradientShift 4s ease infinite;
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #FFFFFF;
 }
 
-.bg-animated-gradient-fast {
-  background: linear-gradient(-45deg, #051C2C, #004D40, #006064, #00838F, #00BCD4);
-  background-size: 300% 300%;
-  animation: gradientShift 4s ease infinite;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Premium Clean Glassmorphism Card Style (No Cyan/Blue Borders) */
-.glass-card-white {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+/* Card glass / light container styling */
+.clinic-card {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(204, 214, 207, 0.6);
+  border-radius: 1.25rem;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card-white:hover {
-  border-color: rgba(203, 213, 225, 1);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-  transform: translateY(-4px);
-}
-
-.glass-card-dark {
-  background: rgba(5, 28, 44, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card-dark:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.3);
-  transform: translateY(-4px);
+.clinic-card:hover {
+  border-color: #143C3A;
+  box-shadow: 0 12px 30px -4px rgba(20, 60, 58, 0.1);
 }
 
 @keyframes fadeIn {
@@ -146,4 +131,14 @@ textarea:focus-visible {
 
 .animate-fadeIn {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

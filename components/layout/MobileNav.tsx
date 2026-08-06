@@ -3,21 +3,9 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { practiceConfig } from '@/data/practice';
-import { treatmentsData } from '@/data/treatments';
-import {
-  Phone,
-  Calendar,
-  MapPin,
-  X,
-  ChevronRight,
-  Shield,
-  Clock,
-  AlertCircle,
-  HelpCircle,
-  FileText,
-  Users,
-} from 'lucide-react';
+import { Phone, Calendar, MessageCircle, X, ChevronRight, Star } from 'lucide-react';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -25,215 +13,123 @@ interface MobileNavProps {
 }
 
 export const MobileNav: React.FC<MobileNavProps> = ({ isOpen, onClose }) => {
-  const isLab = practiceConfig.type === 'dental-laboratory';
-  const primaryCtaText = isLab ? 'Submit Referral' : 'Book';
+  const pathname = usePathname();
 
-  return (
-    <>
-      {/* Mobile Drawer Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 lg:hidden animate-fadeIn"
-          onClick={onClose}
-        />
-      )}
-
-      {/* Mobile Drawer Panel */}
-      <div
-        className={`fixed top-0 right-0 bottom-0 w-5/6 max-w-md bg-slate-950 text-white z-50 transform transition-transform duration-300 ease-in-out shadow-2xl flex flex-col lg:hidden ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        {/* Drawer Header */}
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-cyan-600 text-white flex items-center justify-center font-bold font-serif text-sm">
-              S
-            </div>
-            <span className="font-serif font-bold text-sm tracking-tight text-white">
-              {practiceConfig.name}
-            </span>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-2 rounded-lg bg-slate-900 text-white hover:text-cyan-300"
-            aria-label="Close menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Drawer Links Scrollable */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-6">
-          <div className="space-y-1">
-            <Link
-              href="/"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Home</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/about"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>About Us</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/treatments"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>{isLab ? 'Laboratory Services' : 'Treatments & Services'}</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/new-patients"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>{isLab ? 'Dental Referrals' : 'New Patients'}</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/fees"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Fee Guide & Finance</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/team"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Meet Our Team</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/emergency-dentist"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg bg-cyan-900/60 border border-cyan-400/40 font-bold text-sm text-cyan-300"
-            >
-              <div className="flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-cyan-400" />
-                <span>Emergency Dental Care</span>
-              </div>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/nervous-patients"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Support for Nervous Patients</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/patient-information"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Patient Information Hub</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/faqs"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Frequently Asked Questions</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-
-            <Link
-              href="/contact"
-              onClick={onClose}
-              className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-900 font-bold text-sm text-white"
-            >
-              <span>Contact & Directions</span>
-              <ChevronRight className="w-4 h-4 text-cyan-400" />
-            </Link>
-          </div>
-
-          {/* Practice Info Summary */}
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 text-xs text-cyan-100 font-medium">
-            <div className="flex items-start gap-2">
-              <MapPin className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-              <span>
-                {practiceConfig.address}, {practiceConfig.city}, {practiceConfig.postcode}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-cyan-400 shrink-0" />
-              <a href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`} className="hover:underline text-white font-bold">
-                {practiceConfig.phone}
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-cyan-400 shrink-0" />
-              <span>Mon-Fri: 08:30 – 18:00</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Drawer Footer CTA */}
-        <div className="p-4 border-t border-slate-800 bg-slate-950">
-          <Link
-            href={practiceConfig.bookingLink}
-            onClick={onClose}
-            className="w-full bg-cyan-400 text-cyan-950 font-bold py-3 rounded-lg text-center block text-sm shadow-md"
-          >
-            {primaryCtaText} An Appointment
-          </Link>
-        </div>
-      </div>
-
-      {/* Persistent Bottom Mobile Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-slate-950 border-t border-slate-800 shadow-2xl p-2">
-        <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
+  if (!isOpen) {
+    return (
+      /* Mobile Sticky Bottom Action Bar */
+      <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-[#CCD6CF]/70 p-3 shadow-clinic-elevated">
+        <div className="grid grid-cols-3 gap-2">
           <a
             href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-            className="flex flex-col items-center justify-center py-1.5 px-2 rounded-lg bg-slate-900 text-white hover:text-cyan-300 text-xs font-bold"
+            className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#F5F2EB] text-[#143C3A] text-xs font-semibold hover:bg-[#CCD6CF]/50 transition-colors"
           >
-            <Phone className="w-4 h-4 text-cyan-400 mb-0.5" />
-            <span>Call Us</span>
+            <Phone className="w-4 h-4 mb-0.5" />
+            <span>Call</span>
           </a>
 
           <a
-            href={`https://maps.google.com/?q=${encodeURIComponent(
-              `${practiceConfig.name} ${practiceConfig.postcode}`
-            )}`}
+            href={`https://wa.me/${practiceConfig.whatsapp.replace(/\s+/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center py-1.5 px-2 rounded-lg bg-slate-900 text-white hover:text-cyan-300 text-xs font-bold"
+            className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#F5F2EB] text-[#143C3A] text-xs font-semibold hover:bg-[#CCD6CF]/50 transition-colors"
           >
-            <MapPin className="w-4 h-4 text-cyan-400 mb-0.5" />
-            <span>Directions</span>
+            <MessageCircle className="w-4 h-4 mb-0.5 text-emerald-600" />
+            <span>WhatsApp</span>
           </a>
 
           <Link
-            href={practiceConfig.bookingLink}
-            className="flex flex-col items-center justify-center py-1.5 px-2 rounded-lg bg-cyan-400 text-cyan-950 font-bold text-xs shadow-md"
+            href="/contact#appointment-form"
+            className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#143C3A] text-white text-xs font-semibold shadow-sm"
           >
-            <Calendar className="w-4 h-4 mb-0.5" />
-            <span>{primaryCtaText}</span>
+            <Calendar className="w-4 h-4 mb-0.5 text-[#B8926A]" />
+            <span>Book</span>
           </Link>
         </div>
       </div>
-    </>
+    );
+  }
+
+  const links = [
+    { label: 'Home', href: '/' },
+    { label: 'Treatments & Services', href: '/treatments' },
+    { label: 'Smile Transformations', href: '/reviews' },
+    { label: 'About Our Clinic', href: '/about' },
+    { label: 'Fees & Financing', href: '/fees' },
+    { label: 'Urgent Care & Emergency', href: '/emergency-dentist' },
+    { label: 'Contact & Location', href: '/contact' },
+  ];
+
+  return (
+    <div className="fixed inset-0 z-50 bg-[#F5F2EB] flex flex-col justify-between p-6 overflow-y-auto animate-fadeIn lg:hidden">
+      {/* Header Bar inside Mobile Menu */}
+      <div className="flex items-center justify-between pb-6 border-b border-[#CCD6CF]/60">
+        <Link href="/" onClick={onClose} className="flex items-center gap-2">
+          <div className="w-9 h-9 rounded-full bg-[#143C3A] text-white flex items-center justify-center font-serif text-lg font-bold">
+            S
+          </div>
+          <span className="font-serif text-lg font-bold text-[#1B1D1D]">
+            St. James Clinic
+          </span>
+        </Link>
+        <button
+          onClick={onClose}
+          className="w-10 h-10 rounded-full bg-white border border-[#CCD6CF] text-[#1B1D1D] flex items-center justify-center shadow-sm"
+          aria-label="Close Menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Menu Links */}
+      <nav className="py-8 space-y-3">
+        {links.map((link) => {
+          const isActive = pathname === link.href;
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={onClose}
+              className={`flex items-center justify-between p-3.5 rounded-xl text-base font-semibold transition-all ${
+                isActive
+                  ? 'bg-[#143C3A] text-white shadow-sm'
+                  : 'bg-white text-[#1B1D1D] border border-[#CCD6CF]/50 hover:border-[#143C3A]'
+              }`}
+            >
+              <span>{link.label}</span>
+              <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#B8926A]' : 'text-[#1B1D1D]/40'}`} />
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Bottom CTA Block */}
+      <div className="pt-6 border-t border-[#CCD6CF]/60 space-y-4">
+        <div className="flex items-center justify-between text-xs text-[#1B1D1D]/80 bg-white p-3 rounded-xl border border-[#CCD6CF]/50">
+          <div className="flex items-center gap-1 text-[#B8926A] font-bold">
+            <Star className="w-4 h-4 fill-[#B8926A]" />
+            <span>4.9 Google Rating</span>
+          </div>
+          <span>London SW1</span>
+        </div>
+
+        <Link
+          href="/contact#appointment-form"
+          onClick={onClose}
+          className="w-full btn-primary justify-center text-sm py-3.5 shadow-md"
+        >
+          <Calendar className="w-4 h-4 text-[#B8926A]" />
+          <span>Book a Consultation</span>
+        </Link>
+
+        <a
+          href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
+          className="w-full btn-secondary justify-center text-sm py-3"
+        >
+          <Phone className="w-4 h-4" />
+          <span>Call {practiceConfig.phone}</span>
+        </a>
+      </div>
+    </div>
   );
 };

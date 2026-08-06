@@ -1,14 +1,12 @@
 # dependencies
-/node_modules
-/.pnpm
-/.yarn
+node_modules/
+.pnpm/
+.yarn/
 
 # next.js
-/.next/
-/out/
-
-# production
-/build
+.next/
+out/
+build/
 
 # debug
 npm-debug.log*

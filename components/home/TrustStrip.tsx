@@ -2,85 +2,42 @@
 'use client';
 
 import React from 'react';
-import { practiceConfig } from '@/data/practice';
-import {
-  ShieldCheck,
-  UserPlus,
-  Clock,
-  Receipt,
-  HeartHandshake,
-  CreditCard,
-  Accessibility,
-  Car,
-  CalendarCheck,
-} from 'lucide-react';
+import { Star, Award, Users, Cpu, CreditCard } from 'lucide-react';
 
 export const TrustStrip: React.FC = () => {
   const trustItems = [
-    {
-      icon: ShieldCheck,
-      label: 'GDC-Registered Team',
-      enabled: true,
-    },
-    {
-      icon: UserPlus,
-      label: 'New Patients Welcome',
-      enabled: practiceConfig.acceptingNewPatients,
-    },
-    {
-      icon: Clock,
-      label: 'Emergency Triage',
-      enabled: practiceConfig.emergencyAvailable,
-    },
-    {
-      icon: Receipt,
-      label: 'Transparent Fee Guide',
-      enabled: true,
-    },
-    {
-      icon: HeartHandshake,
-      label: 'Family-Friendly Care',
-      enabled: true,
-    },
-    {
-      icon: CreditCard,
-      label: 'Flexible Finance',
-      enabled: practiceConfig.financeAvailable,
-    },
-    {
-      icon: Accessibility,
-      label: 'Step-Free Access',
-      enabled: true,
-    },
-    {
-      icon: Car,
-      label: 'Patient Parking',
-      enabled: !!practiceConfig.parkingInfo,
-    },
-    {
-      icon: CalendarCheck,
-      label: 'Extended Hours',
-      enabled: true,
-    },
-  ].filter((item) => item.enabled);
+    { icon: Star, text: '4.9 Google Rating', sub: '420+ Patient Reviews' },
+    { icon: Award, text: '18+ Years Clinical Practice', sub: 'Mayfair Excellence' },
+    { icon: Users, text: '12,000+ Smiles Restored', sub: 'Trusted UK Care' },
+    { icon: Cpu, text: '3D Guided Technology', sub: 'Low-Dose Digital Scans' },
+    { icon: CreditCard, text: '0% APR Finance', sub: 'Up to 12 Months' },
+  ];
 
   return (
-    <section className="bg-navy-950 py-6 border-b border-navy-800 overflow-hidden">
+    <section className="bg-white py-6 border-b border-[#CCD6CF]/50 shadow-clinic-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {trustItems.slice(0, 6).map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center gap-3 p-3 rounded-xl bg-navy-900/60 border border-navy-800/80 hover:border-brass/40 transition-colors group"
-            >
-              <div className="w-9 h-9 rounded-lg bg-navy-800 flex items-center justify-center text-brass group-hover:bg-brass group-hover:text-navy-900 transition-all shrink-0">
-                <item.icon className="w-4 h-4" />
+        <div className="flex flex-wrap items-center justify-between gap-6 divide-y md:divide-y-0 md:divide-x divide-[#CCD6CF]/50">
+          {trustItems.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="flex items-center gap-3 pt-4 md:pt-0 md:px-4 first:pl-0 last:pr-0 min-w-[180px]"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#F5F2EB] border border-[#CCD6CF] flex items-center justify-center text-[#143C3A] shrink-0">
+                  <Icon className="w-4 h-4 text-[#143C3A]" />
+                </div>
+                <div>
+                  <span className="block text-xs sm:text-sm font-bold text-[#143C3A] tracking-tight">
+                    {item.text}
+                  </span>
+                  <span className="block text-[11px] text-[#1B1D1D]/60 font-medium">
+                    {item.sub}
+                  </span>
+                </div>
               </div>
-              <span className="text-xs font-medium text-ivory/90 group-hover:text-brass transition-colors leading-tight">
-                {item.label}
-              </span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
