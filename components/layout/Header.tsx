@@ -4,155 +4,106 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { Phone, Calendar, Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 import { practiceConfig } from '@/data/practice';
-import {
-  Calendar,
-  ChevronDown,
-  Menu,
-  X,
-  Phone,
-  Sparkles,
-  Shield,
-  Stethoscope,
-  Smile,
-  CheckCircle,
-} from 'lucide-react';
 import { MobileNav } from './MobileNav';
-import { treatmentsData } from '@/data/treatments';
 
 export const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isTreatmentsHovered, setIsTreatmentsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMegaMenuOpen(false);
-    setMobileNavOpen(false);
-  }, [pathname]);
-
   const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Treatments', href: '/treatments', hasDropdown: true },
-    { name: 'Smile Gallery', href: '/reviews' },
-    { name: 'About', href: '/about' },
-    { name: 'Fees', href: '/fees' },
-    { name: 'Contact', href: '/contact' },
+    { href: '/', label: 'Home' },
+    { href: '/treatments', label: 'Treatments', hasDropdown: true },
+    { href: '/reviews', label: 'Smile Gallery' },
+    { href: '/about', label: 'About' },
+    { href: '/fees', label: 'Fees' },
+    { href: '/contact', label: 'Contact' },
   ];
 
-  const categories = [
-    { id: 'cosmetic', title: 'Cosmetic Dentistry', icon: Sparkles },
-    { id: 'orthodontics', title: 'Invisalign & Aligners', icon: Sparkles },
-    { id: 'implants', title: 'Dental Implants', icon: Smile },
-    { id: 'general', title: 'General Dentistry', icon: Stethoscope },
-    { id: 'restorative', title: 'Restorative Care', icon: Shield },
+  const featuredTreatments = [
+    { title: 'Invisalign Clear Aligners', href: '/treatments/invisalign-aligners' },
+    { title: 'Dental Implants', href: '/treatments/dental-implants' },
+    { title: 'Composite Bonding', href: '/treatments/composite-bonding' },
+    { title: 'Porcelain Veneers', href: '/treatments/composite-bonding' },
+    { title: 'Teeth Whitening', href: '/treatments/teeth-whitening' },
+    { title: 'General & Airflow Hygiene', href: '/treatments/dental-checkups' },
   ];
 
   return (
     <>
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#FAF8F5]/95 backdrop-blur-md shadow-clinic-soft py-3.5 border-b border-[#CCD6CF]/50'
-            : 'bg-[#F5F2EB] py-5 border-b border-transparent'
+            ? 'bg-white border-b border-[#DDE4E6] shadow-nordic-soft py-3.5'
+            : 'bg-[#F8FAFA]/90 backdrop-blur-md border-b border-[#DDE4E6]/60 py-4 sm:py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-3 group focus:outline-none rounded-lg"
-              aria-label="St. James Clinic Home"
-            >
-              <div className="w-10 h-10 rounded-full bg-[#143C3A] text-white flex items-center justify-center font-serif text-xl font-bold transition-transform group-hover:scale-105 shadow-sm">
-                S
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-9 h-9 rounded-xl bg-[#70AEB3] flex items-center justify-center text-white font-bold text-lg shadow-nordic-soft group-hover:bg-[#5A9499] transition-colors">
+                St
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-xl font-bold text-[#1B1D1D] tracking-tight group-hover:text-[#143C3A] transition-colors leading-tight">
-                  St. James Clinic
+                <span className="font-sans font-bold text-lg sm:text-xl text-[#122A38] tracking-tight group-hover:text-[#70AEB3] transition-colors">
+                  {practiceConfig.name}
                 </span>
-                <span className="text-[10px] text-[#143C3A] font-sans tracking-widest uppercase font-semibold">
-                  Dental & Cosmetic
+                <span className="text-[10px] text-[#122A38]/60 uppercase tracking-widest font-medium">
+                  Dental Wellness • Mayfair
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-7" aria-label="Main Navigation">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+
                 if (link.hasDropdown) {
                   return (
                     <div
-                      key={link.name}
-                      className="relative"
-                      onMouseEnter={() => setMegaMenuOpen(true)}
-                      onMouseLeave={() => setMegaMenuOpen(false)}
+                      key={link.href}
+                      className="relative py-2"
+                      onMouseEnter={() => setIsTreatmentsHovered(true)}
+                      onMouseLeave={() => setIsTreatmentsHovered(false)}
                     >
                       <Link
                         href={link.href}
-                        className={`text-sm font-medium transition-colors flex items-center gap-1 py-1 ${
-                          pathname.startsWith('/treatments')
-                            ? 'text-[#143C3A] font-semibold border-b-2 border-[#143C3A]'
-                            : 'text-[#1B1D1D] hover:text-[#143C3A]'
+                        className={`inline-flex items-center gap-1 text-sm font-semibold transition-colors ${
+                          isActive || isTreatmentsHovered
+                            ? 'text-[#70AEB3]'
+                            : 'text-[#122A38] hover:text-[#70AEB3]'
                         }`}
-                        aria-expanded={megaMenuOpen}
                       >
-                        {link.name}
-                        <ChevronDown
-                          className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                            megaMenuOpen ? 'rotate-180 text-[#143C3A]' : 'text-[#1B1D1D]/60'
-                          }`}
-                        />
+                        <span>{link.label}</span>
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isTreatmentsHovered ? 'rotate-180' : ''}`} />
                       </Link>
 
-                      {/* Treatments Dropdown Menu */}
-                      {megaMenuOpen && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-[720px] bg-white border border-[#CCD6CF]/70 shadow-clinic-elevated rounded-2xl p-6 grid grid-cols-2 gap-6 animate-fadeIn mt-2 z-50">
-                          {categories.map((cat) => {
-                            const items = treatmentsData.filter((t) => t.category === cat.id);
-                            if (items.length === 0) return null;
-                            return (
-                              <div key={cat.id} className="space-y-2.5">
-                                <div className="flex items-center gap-2 pb-1.5 border-b border-[#CCD6CF]/40 text-[#143C3A] text-xs font-semibold uppercase tracking-wider">
-                                  <cat.icon className="w-3.5 h-3.5 text-[#B8926A]" />
-                                  {cat.title}
-                                </div>
-                                <ul className="space-y-1 text-xs">
-                                  {items.map((treatment) => (
-                                    <li key={treatment.slug}>
-                                      <Link
-                                        href={`/treatments/${treatment.slug}`}
-                                        className="text-[#1B1D1D]/80 hover:text-[#143C3A] hover:translate-x-0.5 transition-all block py-1 font-medium"
-                                      >
-                                        {treatment.name}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            );
-                          })}
-                          <div className="col-span-2 pt-3 border-t border-[#CCD6CF]/40 flex items-center justify-between text-xs text-[#1B1D1D]/70">
-                            <span>Private consultations & comprehensive written plans.</span>
-                            <Link
-                              href="/treatments"
-                              className="text-[#143C3A] font-semibold hover:underline flex items-center gap-1"
-                            >
-                              Explore all treatments &rarr;
-                            </Link>
+                      {/* Treatments Mega Menu */}
+                      {isTreatmentsHovered && (
+                        <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white border border-[#DDE4E6] rounded-2xl p-3 shadow-nordic-card animate-fadeIn">
+                          <div className="space-y-1">
+                            {featuredTreatments.map((item) => (
+                              <Link
+                                key={item.href}
+                                href={item.href}
+                                className="block px-3 py-2 rounded-xl text-xs font-semibold text-[#122A38] hover:bg-[#E7F1F3] hover:text-[#70AEB3] transition-colors"
+                              >
+                                {item.title}
+                              </Link>
+                            ))}
                           </div>
                         </div>
                       )}
@@ -160,66 +111,53 @@ export const Header: React.FC = () => {
                   );
                 }
 
-                const isActive = pathname === link.href;
                 return (
                   <Link
-                    key={link.name}
+                    key={link.href}
                     href={link.href}
-                    className={`text-sm font-medium transition-colors py-1 ${
-                      isActive
-                        ? 'text-[#143C3A] font-semibold border-b-2 border-[#143C3A]'
-                        : 'text-[#1B1D1D] hover:text-[#143C3A]'
+                    className={`text-sm font-semibold transition-colors ${
+                      isActive ? 'text-[#70AEB3]' : 'text-[#122A38] hover:text-[#70AEB3]'
                     }`}
                   >
-                    {link.name}
+                    {link.label}
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Desktop Action CTA */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Desktop Right Action Bar */}
+            <div className="hidden lg:flex items-center gap-5">
               <a
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="text-xs font-semibold text-[#143C3A] hover:text-[#0E2A29] flex items-center gap-1.5 px-3 py-2 rounded-full hover:bg-[#CCD6CF]/30 transition-all"
+                className="flex items-center gap-2 text-xs font-bold text-[#122A38] hover:text-[#70AEB3] transition-colors"
               >
-                <Phone className="w-3.5 h-3.5" />
+                <Phone className="w-3.5 h-3.5 text-[#70AEB3]" />
                 <span>{practiceConfig.phone}</span>
               </a>
 
-              <Link
-                href="/contact#appointment-form"
-                className="btn-primary text-xs font-semibold"
-              >
-                <Calendar className="w-3.5 h-3.5 text-[#B8926A]" />
+              <Link href="/contact#appointment-form" className="btn-primary text-xs py-2.5 px-5">
+                <Calendar className="w-3.5 h-3.5" />
                 <span>Book Consultation</span>
               </Link>
             </div>
 
-            {/* Mobile Menu Trigger */}
-            <div className="flex lg:hidden items-center gap-3">
-              <a
-                href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
-                className="w-9 h-9 rounded-full bg-[#143C3A] text-white flex items-center justify-center shadow-sm"
-                aria-label="Call Clinic"
-              >
-                <Phone className="w-4 h-4" />
-              </a>
-              <button
-                onClick={() => setMobileNavOpen(!mobileNavOpen)}
-                className="w-10 h-10 rounded-xl bg-white border border-[#CCD6CF] text-[#1B1D1D] flex items-center justify-center shadow-sm"
-                aria-label={mobileNavOpen ? 'Close Menu' : 'Open Menu'}
-                aria-expanded={mobileNavOpen}
-              >
-                {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
+              className="lg:hidden p-2 rounded-xl text-[#122A38] hover:bg-[#E7F1F3] transition-colors"
+              aria-label="Toggle Navigation Menu"
+            >
+              {isMobileNavOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Full-Screen Mobile Navigation Overlay */}
-      <MobileNav isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+      {/* Spacer to prevent header overlay */}
+      <div className="h-16 sm:h-20" />
+
+      {/* Mobile Nav Overlay */}
+      <MobileNav isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />
     </>
   );
 };

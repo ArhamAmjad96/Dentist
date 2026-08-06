@@ -1,5 +1,6 @@
 import React from 'react';
 import { Hero } from '@/components/home/Hero';
+import { CredibilityStrip } from '@/components/home/CredibilityStrip';
 import { TreatmentFinder } from '@/components/home/TreatmentFinder';
 import { SmileGallery } from '@/components/home/SmileGallery';
 import { MeetDentist } from '@/components/home/MeetDentist';
@@ -14,31 +15,34 @@ export default function HomePage() {
   const schema = generateDentistSchema();
 
   return (
-    <main className="bg-[#F5F2EB] min-h-screen text-[#1B1D1D] overflow-hidden">
+    <main className="bg-[#F8FAFA] min-h-screen text-[#122A38] overflow-hidden">
       <SchemaOrg schema={schema} />
 
-      {/* Section 1 — Hero with enlarged 3-item trust row */}
+      {/* 1. Hero (Pearl White #F8FAFA) */}
       <Hero />
 
-      {/* Section 2 — Merged Treatment Finder and 6 Core Treatments */}
+      {/* Compact Credibility Strip (White #FFFFFF) */}
+      <CredibilityStrip />
+
+      {/* 2. Treatment Finder & Core Treatments (Soft Ice Blue #E7F1F3) */}
       <TreatmentFinder />
 
-      {/* Section 3 — Smile Transformations (Max 3 cases + button) */}
+      {/* 3. Smile Transformations (White #FFFFFF) */}
       <SmileGallery />
 
-      {/* Section 4 — Merged Lead Dentist & Clinic Experience */}
+      {/* 4. Dentist & Clinic Story (Midnight Navy #122A38 with White Text) */}
       <MeetDentist />
 
-      {/* Section 5 — Compact Patient Journey */}
+      {/* 5. Your Treatment Journey (Pearl White #F8FAFA) */}
       <PatientJourney />
 
-      {/* Section 6 — Patient Reviews (1 Featured + 3 Supporting) */}
+      {/* 6. Patient Stories & Reviews (Soft Ice Blue #E7F1F3) */}
       <Testimonials />
 
-      {/* Section 7 — Merged Fees, Finance & FAQ */}
+      {/* 7. Fees, Finance & FAQs (White #FFFFFF) */}
       <FeesFinanceFAQ />
 
-      {/* Section 8 — Compact Contact, Directions & Map */}
+      {/* 8. Contact & Location (Midnight Navy #122A38) */}
       <LocationContact />
     </main>
   );

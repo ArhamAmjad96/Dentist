@@ -8,69 +8,72 @@ export const PatientJourney: React.FC = () => {
   const steps = [
     {
       number: '01',
-      title: 'Book your consultation',
-      description: 'Schedule your initial appointment online or by phone with our friendly Mayfair reception team.',
+      title: 'Consultation',
+      description: 'Initial consultation and 3D digital oral health examination with our dental team.',
       icon: Calendar,
     },
     {
       number: '02',
-      title: 'Receive your personalised plan',
-      description: 'Undergo a 3D intraoral scan and receive a transparent treatment plan with fixed fees.',
+      title: 'Personalised plan',
+      description: 'Receive a bespoke treatment plan detailing options, 3D simulations, and fixed transparent pricing.',
       icon: FileText,
     },
     {
       number: '03',
-      title: 'Begin your treatment',
-      description: 'Relax in our tranquil care suites as your bespoke dental treatment is precisely delivered.',
+      title: 'Treatment',
+      description: 'Experience precise, gentle dental care inside our tranquil Mayfair treatment suites.',
       icon: Sparkles,
     },
     {
       number: '04',
-      title: 'Enjoy ongoing aftercare',
-      description: 'Benefit from comprehensive post-treatment care and dedicated long-term smile support.',
+      title: 'Aftercare',
+      description: 'Enjoy ongoing post-treatment review and long-term preventive care support.',
       icon: ShieldCheck,
     },
   ];
 
   return (
-    <section className="py-16 lg:py-20 bg-[#F5F2EB] border-b border-[#CCD6CF]/50">
+    <section className="py-16 lg:py-20 bg-[#F8FAFA] border-b border-[#DDE4E6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-xs font-semibold text-[#143C3A] uppercase tracking-widest block">
-            Seamless Experience
+          <span className="text-xs font-semibold text-[#70AEB3] uppercase tracking-widest block">
+            Considerate Care
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1B1D1D] tracking-tight">
-            Your Patient Journey
+          <h2 className="font-sans text-3xl sm:text-4xl font-extrabold text-[#122A38] tracking-tight">
+            Your Treatment <span className="italic font-serif font-normal text-[#70AEB3]">Journey</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#1B1D1D]/75 font-normal">
-            Four simple steps from your first enquiry to a lifetime of confident smiles.
+          <p className="text-xs sm:text-sm text-[#122A38]/70 font-normal">
+            Four simple stages from your first enquiry to your finished smile.
           </p>
         </div>
 
-        {/* Compact 4-Step Process Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Compact 4-Stage Horizontal Timeline */}
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Subtle connecting line SVG on desktop */}
+          <div className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-[#70AEB3]/30 pointer-events-none" />
+
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.number}
-                className="bg-white border border-[#CCD6CF] rounded-2xl p-6 shadow-clinic-card relative flex flex-col justify-between space-y-4"
+                className="bg-white border border-[#DDE4E6] rounded-2xl p-6 shadow-nordic-soft relative flex flex-col justify-between space-y-4"
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#B8926A] tracking-wider uppercase">
-                    Step {step.number}
+                <div className="flex items-center justify-between z-10">
+                  <span className="text-xs font-bold text-[#70AEB3] tracking-wider uppercase">
+                    Stage {step.number}
                   </span>
-                  <div className="w-9 h-9 rounded-xl bg-[#F5F2EB] flex items-center justify-center text-[#143C3A]">
-                    <Icon className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-xl bg-[#E7F1F3] flex items-center justify-center text-[#70AEB3]">
+                    <Icon className="w-5 h-5" />
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <h3 className="font-serif font-bold text-lg text-[#143C3A]">
+                  <h3 className="font-sans font-bold text-lg text-[#122A38]">
                     {step.title}
                   </h3>
-                  <p className="text-xs text-[#1B1D1D]/75 leading-relaxed font-normal">
+                  <p className="text-xs text-[#122A38]/75 leading-relaxed font-normal">
                     {step.description}
                   </p>
                 </div>
