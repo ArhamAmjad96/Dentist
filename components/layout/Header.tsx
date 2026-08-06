@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Phone, Calendar, Menu, X, ChevronDown, Sparkles } from 'lucide-react';
+import { Phone, Calendar, Menu, X, ChevronDown } from 'lucide-react';
 import { practiceConfig } from '@/data/practice';
 import { MobileNav } from './MobileNav';
 
@@ -43,24 +43,24 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
             ? 'bg-white border-b border-[#DDE4E6] shadow-nordic-soft py-3.5'
-            : 'bg-[#F8FAFA]/90 backdrop-blur-md border-b border-[#DDE4E6]/60 py-4 sm:py-5'
+            : 'bg-[#F8FAFA] border-b border-[#DDE4E6] py-4 sm:py-4.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-[#70AEB3] flex items-center justify-center text-white font-bold text-lg shadow-nordic-soft group-hover:bg-[#5A9499] transition-colors">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-[#70AEB3] flex items-center justify-center text-white font-extrabold text-lg shadow-nordic-soft group-hover:bg-[#5A9499] transition-colors">
                 St
               </div>
               <div className="flex flex-col">
                 <span className="font-sans font-bold text-lg sm:text-xl text-[#122A38] tracking-tight group-hover:text-[#70AEB3] transition-colors">
                   {practiceConfig.name}
                 </span>
-                <span className="text-[10px] text-[#122A38]/60 uppercase tracking-widest font-medium">
+                <span className="text-[10px] text-[#122A38]/70 uppercase tracking-widest font-semibold">
                   Dental Wellness • Mayfair
                 </span>
               </div>
@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
                     >
                       <Link
                         href={link.href}
-                        className={`inline-flex items-center gap-1 text-sm font-semibold transition-colors ${
+                        className={`inline-flex items-center gap-1.5 text-sm font-bold transition-colors ${
                           isActive || isTreatmentsHovered
                             ? 'text-[#70AEB3]'
                             : 'text-[#122A38] hover:text-[#70AEB3]'
@@ -115,7 +115,7 @@ export const Header: React.FC = () => {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-sm font-semibold transition-colors ${
+                    className={`text-sm font-bold transition-colors ${
                       isActive ? 'text-[#70AEB3]' : 'text-[#122A38] hover:text-[#70AEB3]'
                     }`}
                   >
@@ -131,12 +131,12 @@ export const Header: React.FC = () => {
                 href={`tel:${practiceConfig.phone.replace(/\s+/g, '')}`}
                 className="flex items-center gap-2 text-xs font-bold text-[#122A38] hover:text-[#70AEB3] transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-[#70AEB3]" />
+                <Phone className="w-4 h-4 text-[#70AEB3]" />
                 <span>{practiceConfig.phone}</span>
               </a>
 
-              <Link href="/contact#appointment-form" className="btn-primary text-xs py-2.5 px-5">
-                <Calendar className="w-3.5 h-3.5" />
+              <Link href="/contact#appointment-form" className="btn-primary text-xs py-3 px-6 shadow-nordic-soft">
+                <Calendar className="w-4 h-4" />
                 <span>Book Consultation</span>
               </Link>
             </div>
@@ -152,9 +152,6 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </header>
-
-      {/* Spacer to prevent header overlay */}
-      <div className="h-16 sm:h-20" />
 
       {/* Mobile Nav Overlay */}
       <MobileNav isOpen={isMobileNavOpen} onClose={() => setIsMobileNavOpen(false)} />

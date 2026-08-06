@@ -4,38 +4,38 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, ArrowRight, Star, CreditCard, Clock, CheckCircle2, Shield } from 'lucide-react';
+import { Calendar, ArrowRight, Star, CreditCard, Clock, CheckCircle2 } from 'lucide-react';
 import { practiceConfig } from '@/data/practice';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative bg-[#F8FAFA] pt-8 pb-12 lg:pt-14 lg:pb-16 overflow-hidden border-b border-[#DDE4E6]">
+    <section className="relative bg-[#F8FAFA] pt-10 pb-14 lg:pt-16 lg:pb-20 overflow-hidden border-b border-[#DDE4E6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Editorial Content */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-7">
             {/* Small Location Label */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DDE4E6] shadow-nordic-soft text-xs font-semibold text-[#122A38] tracking-wider uppercase">
-              <span className="w-2 h-2 rounded-full bg-[#70AEB3] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#DDE4E6] shadow-nordic-soft text-xs font-bold text-[#122A38] tracking-wider uppercase">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#70AEB3] animate-pulse" />
               <span>Mayfair & Central London • Private Dental Care</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-sans text-4xl sm:text-6xl xl:text-[74px] font-extrabold text-[#122A38] tracking-tight leading-[1.06]">
+            <h1 className="font-sans text-4xl sm:text-6xl xl:text-[76px] font-extrabold text-[#122A38] tracking-tight leading-[1.05]">
               Modern dentistry,<br />
               designed around <span className="italic font-serif font-normal text-[#70AEB3]">you</span>.
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-lg text-[#122A38]/80 max-w-2xl leading-relaxed font-normal">
+            <p className="text-base sm:text-xl text-[#122A38]/85 max-w-2xl leading-relaxed font-medium">
               Personalised cosmetic and general dental care in a calm, contemporary environment.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-1">
+            <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/contact#appointment-form"
-                className="btn-primary text-sm sm:text-base py-3.5 px-7 shadow-nordic-soft"
+                className="btn-primary text-sm sm:text-base py-4 px-8 shadow-nordic-soft font-bold"
               >
                 <Calendar className="w-4 h-4 text-white" />
                 <span>Book a Consultation</span>
@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
 
               <Link
                 href="/treatments"
-                className="btn-secondary text-sm sm:text-base py-3.5 px-7"
+                className="btn-secondary text-sm sm:text-base py-4 px-8 font-bold"
               >
                 <span>Explore Treatments</span>
                 <ArrowRight className="w-4 h-4 text-[#122A38]" />
@@ -53,7 +53,7 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: Premium Bright Image with Floating Review Card */}
           <div className="lg:col-span-5 relative">
-            <div className="relative h-[400px] sm:h-[480px] w-full rounded-3xl overflow-hidden border border-[#DDE4E6] shadow-nordic-elevated group bg-white">
+            <div className="relative h-[420px] sm:h-[500px] w-full rounded-3xl overflow-hidden border border-[#DDE4E6] shadow-nordic-elevated group bg-white">
               <Image
                 src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"
                 alt="St. James Clinic modern dental suite and patient care"
@@ -65,7 +65,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating Review Card */}
-            <div className="absolute -bottom-5 -left-3 sm:-left-6 bg-white border border-[#DDE4E6] shadow-nordic-elevated p-4 sm:p-5 rounded-2xl max-w-[280px] animate-fadeIn hidden sm:block">
+            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-white border border-[#DDE4E6] shadow-nordic-elevated p-4 sm:p-5 rounded-2xl max-w-[290px] animate-fadeIn hidden sm:block">
               <div className="flex items-center gap-2 mb-1.5">
                 <div className="flex text-[#D6B99A]">
                   {[...Array(5)].map((_, i) => (
@@ -85,19 +85,19 @@ export const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Significantly Enlarged 3 Trust Indicators */}
-        <div className="mt-10 sm:mt-12 pt-8 pb-4 border-t border-[#DDE4E6]">
+        {/* Enlarged 3 Trust Indicators */}
+        <div className="mt-12 sm:mt-14 pt-9 pb-4 border-t border-[#DDE4E6]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#DDE4E6]">
             {/* 1. 4.9 Google Rating */}
             <div className="flex items-center gap-4 pt-4 md:pt-0 md:pr-4">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#D6B99A] shrink-0 shadow-nordic-soft">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#D6B99A] shrink-0 shadow-nordic-soft">
                 <Star className="w-6 h-6 sm:w-7 sm:h-7 fill-[#D6B99A]" />
               </div>
               <div>
-                <span className="block text-base sm:text-lg font-bold text-[#122A38] tracking-tight leading-snug">
+                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
                   4.9 Google Rating
                 </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/70 font-normal">
+                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
                   420+ verified reviews
                 </span>
               </div>
@@ -105,14 +105,14 @@ export const Hero: React.FC = () => {
 
             {/* 2. Flexible Finance */}
             <div className="flex items-center gap-4 pt-4 md:pt-0 md:px-6">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
                 <CreditCard className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div>
-                <span className="block text-base sm:text-lg font-bold text-[#122A38] tracking-tight leading-snug">
+                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
                   Flexible Finance
                 </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/70 font-normal">
+                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
                   0% APR options available
                 </span>
               </div>
@@ -120,14 +120,14 @@ export const Hero: React.FC = () => {
 
             {/* 3. Same-Week Appointments */}
             <div className="flex items-center gap-4 pt-4 md:pt-0 md:pl-6">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
                 <Clock className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div>
-                <span className="block text-base sm:text-lg font-bold text-[#122A38] tracking-tight leading-snug">
+                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
                   Same-Week Appointments
                 </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/70 font-normal">
+                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
                   New patient spaces
                 </span>
               </div>
