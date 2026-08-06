@@ -4,38 +4,55 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, ArrowRight, Star, CreditCard, Clock, CheckCircle2 } from 'lucide-react';
+import { Calendar, ArrowRight, Star, CheckCircle2, Heart, Award, Cpu, Smile, FileText, CreditCard, Clock, ShieldCheck, Shield } from 'lucide-react';
 import { practiceConfig } from '@/data/practice';
 
 export const Hero: React.FC = () => {
+  const trustStatements = [
+    { text: 'Patient-First Care', icon: Heart },
+    { text: 'Experienced Dental Team', icon: Award },
+    { text: 'Modern Digital Dentistry', icon: Cpu },
+    { text: 'Gentle Treatment', icon: Smile },
+    { text: 'Natural-Looking Results', icon: CheckCircle2 },
+    { text: 'Personalised Care Plans', icon: FileText },
+    { text: 'Flexible Finance Options', icon: CreditCard },
+    { text: 'Same-Week Appointments', icon: Clock },
+    { text: 'Transparent Pricing', icon: ShieldCheck },
+    { text: 'Trusted UK Standards', icon: Shield },
+  ];
+
+  const doubleStatements = [...trustStatements, ...trustStatements];
+
   return (
-    <section className="relative bg-[#F8FAFA] pt-10 pb-14 lg:pt-16 lg:pb-20 overflow-hidden border-b border-[#DDE4E6]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <section className="relative bg-[#F8FAFA] pt-4 pb-6 lg:pt-6 lg:pb-8 overflow-hidden border-b border-[#DDE4E6]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-8">
+        
+        {/* Main Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
           {/* Left Column: Editorial Content */}
-          <div className="lg:col-span-7 space-y-7">
-            {/* Small Location Label */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#DDE4E6] shadow-nordic-soft text-xs font-bold text-[#122A38] tracking-wider uppercase">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+            {/* Location Label */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#DDE4E6] shadow-nordic-soft text-xs font-bold text-[#122A38] tracking-wider uppercase">
               <span className="w-2.5 h-2.5 rounded-full bg-[#70AEB3] animate-pulse" />
               <span>Mayfair & Central London • Private Dental Care</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-sans text-4xl sm:text-6xl xl:text-[76px] font-extrabold text-[#122A38] tracking-tight leading-[1.05]">
+            <h1 className="font-sans text-3xl sm:text-5xl xl:text-[64px] font-extrabold text-[#122A38] tracking-tight leading-[1.08]">
               Modern dentistry,<br />
               designed around <span className="italic font-serif font-normal text-[#70AEB3]">you</span>.
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-base sm:text-xl text-[#122A38]/85 max-w-2xl leading-relaxed font-medium">
+            <p className="text-sm sm:text-lg text-[#122A38]/85 max-w-xl leading-relaxed font-medium">
               Personalised cosmetic and general dental care in a calm, contemporary environment.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-3.5 pt-1">
               <Link
                 href="/contact#appointment-form"
-                className="btn-primary text-sm sm:text-base py-4 px-8 shadow-nordic-soft font-bold"
+                className="btn-primary text-xs sm:text-sm py-3.5 px-7 shadow-nordic-soft font-bold"
               >
                 <Calendar className="w-4 h-4 text-white" />
                 <span>Book a Consultation</span>
@@ -43,7 +60,7 @@ export const Hero: React.FC = () => {
 
               <Link
                 href="/treatments"
-                className="btn-secondary text-sm sm:text-base py-4 px-8 font-bold"
+                className="btn-secondary text-xs sm:text-sm py-3.5 px-7 font-bold"
               >
                 <span>Explore Treatments</span>
                 <ArrowRight className="w-4 h-4 text-[#122A38]" />
@@ -51,9 +68,9 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Premium Bright Image with Floating Review Card */}
+          {/* Right Column: Premium Bright Image */}
           <div className="lg:col-span-5 relative">
-            <div className="relative h-[420px] sm:h-[500px] w-full rounded-3xl overflow-hidden border border-[#DDE4E6] shadow-nordic-elevated group bg-white">
+            <div className="relative h-[300px] sm:h-[360px] lg:h-[390px] w-full rounded-3xl overflow-hidden border border-[#DDE4E6] shadow-nordic-elevated group bg-white">
               <Image
                 src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80"
                 alt="St. James Clinic modern dental suite and patient care"
@@ -65,75 +82,72 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating Review Card */}
-            <div className="absolute -bottom-6 -left-3 sm:-left-6 bg-white border border-[#DDE4E6] shadow-nordic-elevated p-4 sm:p-5 rounded-2xl max-w-[290px] animate-fadeIn hidden sm:block">
-              <div className="flex items-center gap-2 mb-1.5">
+            <div className="absolute -bottom-4 -left-2 sm:-left-5 bg-white border border-[#DDE4E6] shadow-nordic-elevated p-3.5 rounded-2xl max-w-[260px] animate-fadeIn hidden sm:block">
+              <div className="flex items-center gap-1.5 mb-1">
                 <div className="flex text-[#D6B99A]">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-[#D6B99A]" />
+                    <Star key={i} className="w-3 h-3 fill-[#D6B99A]" />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-[#122A38]">Verified Patient</span>
+                <span className="text-[11px] font-bold text-[#122A38]">Verified Patient</span>
               </div>
-              <p className="text-xs text-[#122A38]/90 italic font-serif leading-relaxed mb-2">
+              <p className="text-[11px] text-[#122A38]/90 italic font-serif leading-snug mb-1.5">
                 &ldquo;Calm atmosphere and brilliant results. My clear aligner journey was flawless.&rdquo;
               </p>
-              <div className="flex items-center justify-between text-[11px] text-[#122A38]/70 pt-1.5 border-t border-[#DDE4E6] font-medium">
+              <div className="flex items-center justify-between text-[10px] text-[#122A38]/70 pt-1 border-t border-[#DDE4E6] font-medium">
                 <span className="font-semibold text-[#122A38]">Charlotte M. • Mayfair</span>
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#70AEB3]" />
+                <CheckCircle2 className="w-3 h-3 text-[#70AEB3]" />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Enlarged 3 Trust Indicators */}
-        <div className="mt-12 sm:mt-14 pt-9 pb-4 border-t border-[#DDE4E6]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#DDE4E6]">
-            {/* 1. 4.9 Google Rating */}
-            <div className="flex items-center gap-4 pt-4 md:pt-0 md:pr-4">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#D6B99A] shrink-0 shadow-nordic-soft">
-                <Star className="w-6 h-6 sm:w-7 sm:h-7 fill-[#D6B99A]" />
-              </div>
-              <div>
-                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
-                  4.9 Google Rating
-                </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
-                  420+ verified reviews
-                </span>
+        {/* Integrated Sliding Marquee Trust Slider at Bottom of Hero */}
+        <div className="bg-[#122A38] text-white rounded-2xl lg:rounded-[36px] p-3 sm:p-3.5 lg:px-5 lg:py-3 shadow-nordic-card border border-[#DDE4E6]/20">
+          <div className="flex flex-col lg:flex-row items-center gap-3 lg:gap-5">
+            
+            {/* Left Fixed Message */}
+            <div className="w-full lg:w-[30%] shrink-0 text-center lg:text-left lg:border-r lg:border-white/15 lg:pr-5">
+              <span className="text-[10px] font-bold text-[#70AEB3] uppercase tracking-widest block">
+                Nordic Dental Wellness
+              </span>
+              <p className="hidden lg:block font-sans text-xs font-semibold text-white/90 leading-snug">
+                Modern dental care designed around your comfort, confidence and long-term health.
+              </p>
+              <p className="lg:hidden font-sans text-xs font-semibold text-white/90">
+                Care designed around you.
+              </p>
+            </div>
+
+            {/* Right Moving Marquee Track */}
+            <div className="w-full lg:w-[70%] overflow-hidden relative group rounded-xl bg-white/5 py-2 px-2">
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#122A38] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#122A38] to-transparent z-10 pointer-events-none" />
+
+              <div className="flex items-center gap-8 sm:gap-10 animate-marquee group-hover:[animation-play-state:paused] whitespace-nowrap">
+                {doubleStatements.map((item, index) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={index}
+                      className="inline-flex items-center gap-2.5 shrink-0 text-white"
+                    >
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#70AEB3]/20 border border-[#70AEB3]/30 flex items-center justify-center text-[#70AEB3]">
+                        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      </div>
+                      <span className="text-xs sm:text-sm font-semibold tracking-tight">
+                        {item.text}
+                      </span>
+                      <span className="text-white/20 pl-4 sm:pl-5 text-xs">|</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            {/* 2. Flexible Finance */}
-            <div className="flex items-center gap-4 pt-4 md:pt-0 md:px-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
-                <CreditCard className="w-6 h-6 sm:w-7 sm:h-7" />
-              </div>
-              <div>
-                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
-                  Flexible Finance
-                </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
-                  0% APR options available
-                </span>
-              </div>
-            </div>
-
-            {/* 3. Same-Week Appointments */}
-            <div className="flex items-center gap-4 pt-4 md:pt-0 md:pl-6">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#E7F1F3] border border-[#DDE4E6] flex items-center justify-center text-[#70AEB3] shrink-0 shadow-nordic-soft">
-                <Clock className="w-6 h-6 sm:w-7 sm:h-7" />
-              </div>
-              <div>
-                <span className="block text-base sm:text-xl font-extrabold text-[#122A38] tracking-tight leading-snug">
-                  Same-Week Appointments
-                </span>
-                <span className="block text-xs sm:text-sm text-[#122A38]/75 font-medium">
-                  New patient spaces
-                </span>
-              </div>
-            </div>
           </div>
         </div>
+
       </div>
     </section>
   );
