@@ -6,7 +6,7 @@ export function generateDentistSchema() {
     '@type': 'Dentist',
     name: practiceConfig.name,
     description: practiceConfig.description,
-    url: 'https://stjamesdental.co.uk',
+    url: typeof window !== 'undefined' ? window.location.origin : 'https://example.co.uk',
     telephone: practiceConfig.phone,
     email: practiceConfig.email,
     image: practiceConfig.images.hero,

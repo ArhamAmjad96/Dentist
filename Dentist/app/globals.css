@@ -1,0 +1,162 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark light;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #0B141E;
+  color: #F7F4EE;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0B141E;
+}
+::-webkit-scrollbar-thumb {
+  background: #23394D;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B79762;
+}
+
+/* Focus Ring Customization */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #B79762;
+  outline-offset: 2px;
+}
+
+/* Dynamic Animated Gradient Text Utilities */
+.text-gradient-brass {
+  background: linear-gradient(120deg, #F0D49B, #B79762, #E5C384, #967845, #F0D49B);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s ease infinite;
+}
+
+.text-gradient-teal {
+  background: linear-gradient(120deg, #4EA6A5, #296C6B, #368988, #8B9C8B, #4EA6A5);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s ease infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Faster & Richer Animated Gradient Background */
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #0B141E, #182C3F, #225857, #152B3C, #1F4544);
+  background-size: 350% 350%;
+  animation: gradientShift 5s ease infinite;
+}
+
+.bg-animated-gradient-fast {
+  background: linear-gradient(-45deg, #0A121B, #1C334A, #286A68, #182E42, #1B4E4D);
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Dynamic Glowing Mesh Orbs */
+.mesh-glow-brass {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(183, 151, 98, 0.35) 0%, rgba(183, 151, 98, 0) 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  animation: meshPulse 3.5s ease-in-out infinite alternate;
+}
+
+.mesh-glow-teal {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(41, 108, 107, 0.4) 0%, rgba(41, 108, 107, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: meshPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes meshPulse {
+  0% {
+    transform: scale(0.9) translate(0, 0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.15) translate(20px, -20px);
+    opacity: 0.85;
+  }
+}
+
+/* Glassmorphism Card Style */
+.glass-card-dark {
+  background: rgba(18, 32, 46, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(183, 151, 98, 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-dark:hover {
+  border-color: rgba(183, 151, 98, 0.6);
+  box-shadow: 0 12px 35px -5px rgba(183, 151, 98, 0.25);
+  transform: translateY(-4px);
+}
+
+.glass-card-light {
+  background: rgba(247, 244, 238, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(41, 108, 107, 0.15);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
