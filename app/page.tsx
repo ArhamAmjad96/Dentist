@@ -1,20 +1,12 @@
-'use me';
-'use client';
-
 import React from 'react';
 import { Hero } from '@/components/home/Hero';
-import { TrustStrip } from '@/components/home/TrustStrip';
 import { TreatmentFinder } from '@/components/home/TreatmentFinder';
-import { FeaturedTreatments } from '@/components/home/FeaturedTreatments';
 import { SmileGallery } from '@/components/home/SmileGallery';
 import { MeetDentist } from '@/components/home/MeetDentist';
 import { PatientJourney } from '@/components/home/PatientJourney';
-import { ClinicExperience } from '@/components/home/ClinicExperience';
 import { Testimonials } from '@/components/home/Testimonials';
-import { FeesFinance } from '@/components/home/FeesFinance';
-import { FAQSection } from '@/components/home/FAQSection';
+import { FeesFinanceFAQ } from '@/components/home/FeesFinanceFAQ';
 import { LocationContact } from '@/components/home/LocationContact';
-import { FinalCTA } from '@/components/home/FinalCTA';
 import { generateDentistSchema } from '@/lib/schema';
 import { SchemaOrg } from '@/components/ui/SchemaOrg';
 
@@ -25,44 +17,29 @@ export default function HomePage() {
     <main className="bg-[#F5F2EB] min-h-screen text-[#1B1D1D] overflow-hidden">
       <SchemaOrg schema={schema} />
 
-      {/* 1. Hero Section */}
+      {/* Section 1 — Hero with enlarged 3-item trust row */}
       <Hero />
 
-      {/* 2. Trust Strip Immediately Below Hero */}
-      <TrustStrip />
-
-      {/* 3. Interactive Goal Selector - Treatment Finder */}
+      {/* Section 2 — Merged Treatment Finder and 6 Core Treatments */}
       <TreatmentFinder />
 
-      {/* 4. Asymmetrical Bento Featured Treatments */}
-      <FeaturedTreatments />
-
-      {/* 5. Smile Transformations Before-and-After Sliders */}
+      {/* Section 3 — Smile Transformations (Max 3 cases + button) */}
       <SmileGallery />
 
-      {/* 6. Editorial Meet the Lead Dentist */}
+      {/* Section 4 — Merged Lead Dentist & Clinic Experience */}
       <MeetDentist />
 
-      {/* 7. 4-Step Patient Journey */}
+      {/* Section 5 — Compact Patient Journey */}
       <PatientJourney />
 
-      {/* 8. Mixed-Size Editorial Clinic Experience Gallery */}
-      <ClinicExperience />
-
-      {/* 9. Patient Stories & Testimonials */}
+      {/* Section 6 — Patient Reviews (1 Featured + 3 Supporting) */}
       <Testimonials />
 
-      {/* 10. Transparent Fees & 0% Finance */}
-      <FeesFinance />
+      {/* Section 7 — Merged Fees, Finance & FAQ */}
+      <FeesFinanceFAQ />
 
-      {/* 11. Accessible FAQs Accordion */}
-      <FAQSection />
-
-      {/* 12. Location, Directions & Contact */}
+      {/* Section 8 — Compact Contact, Directions & Map */}
       <LocationContact />
-
-      {/* 13. Full-Width Deep Teal Final CTA */}
-      <FinalCTA />
     </main>
   );
 }

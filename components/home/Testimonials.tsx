@@ -2,132 +2,117 @@
 'use client';
 
 import React from 'react';
-import { Star, CheckCircle2, Quote } from 'lucide-react';
+import Link from 'next/link';
+import { Star, ArrowRight, CheckCircle2, Quote } from 'lucide-react';
 import { practiceConfig } from '@/data/practice';
 
 export const Testimonials: React.FC = () => {
-  const reviews = [
+  const featuredReview = {
+    name: 'Eleanor Vance',
+    patientType: 'Invisalign & Whitening Patient',
+    rating: 5,
+    quote: 'From my initial consultation through to my final alignment check, the care at St. James Clinic was faultless. Dr. Vance listened to every concern and my teeth look naturally pristine.',
+    date: '1 week ago',
+  };
+
+  const supportingReviews = [
     {
-      id: 'rev-1',
-      author: 'Eleanor Vance',
-      treatment: 'Invisalign & Teeth Whitening',
-      rating: 5,
+      name: 'James C.',
+      patientType: 'Dental Implant Patient',
+      quote: 'Extremely professional and reassuring experience. The 3D scan made the entire implant procedure completely transparent.',
       date: '2 weeks ago',
-      verified: true,
-      text: 'I spent years feeling self-conscious about my crooked front teeth. Dr Alistair and the team at St. James Clinic made the entire clear aligner journey seamless. The 3D scan showed me exactly how my teeth would look before I even started. I couldn’t be happier with my new smile!',
-      featured: true,
     },
     {
-      id: 'rev-2',
-      author: 'Marcus Holloway',
-      treatment: 'Single Dental Implant',
-      rating: 5,
+      name: 'Sophia T.',
+      patientType: 'Composite Bonding Patient',
+      quote: 'My bonding was completed in a single afternoon with zero discomfort. I cannot stop smiling!',
       date: '1 month ago',
-      verified: true,
-      text: 'Extremely professional and virtually painless. I was nervous about implant surgery, but the 3D guided technology made it quick and straightforward. Highly recommended.',
-      featured: false,
     },
     {
-      id: 'rev-3',
-      author: 'Sophia Chen',
-      treatment: 'Composite Bonding',
-      rating: 5,
-      date: '3 weeks ago',
-      verified: true,
-      text: 'Had composite bonding done on 4 front teeth in one afternoon. The shape, shade match, and attention to detail were outstanding. Truly natural results.',
-      featured: false,
-    },
-    {
-      id: 'rev-4',
-      author: 'James R. Sterling',
-      treatment: 'General Hygiene & Airflow',
-      rating: 5,
-      date: '2 months ago',
-      verified: true,
-      text: 'The Airflow hygiene treatment removed all coffee stains with zero discomfort. The reception team is incredibly welcoming and punctual.',
-      featured: false,
+      name: 'Oliver K.',
+      patientType: 'Routine General Patient',
+      quote: 'Clean, elegant practice in Mayfair with punctual, gentle care. Best hygiene Airflow treatment I have had in London.',
+      date: '1 month ago',
     },
   ];
 
-  const featured = reviews.find((r) => r.featured) || reviews[0];
-  const supporting = reviews.filter((r) => !r.featured);
-
   return (
-    <section className="py-24 bg-[#F5F2EB] border-b border-[#CCD6CF]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-20 bg-white border-b border-[#CCD6CF]/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#CCD6CF] text-xs font-bold text-[#143C3A] shadow-sm">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F2EB] border border-[#CCD6CF] text-xs font-semibold text-[#143C3A]">
             <Star className="w-3.5 h-3.5 fill-[#B8926A] text-[#B8926A]" />
-            <span>4.9 / 5.0 Rating on Google Reviews</span>
+            <span>4.9 / 5.0 Google Rating • 420+ Verified Reviews</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#1B1D1D] tracking-tight">
-            Patient Stories & Verified Reviews
+            Patient Stories & Reviews
           </h2>
-          <p className="text-sm sm:text-base text-[#1B1D1D]/70 font-normal">
-            Read authentic feedback from patients who have experienced our personalized, gentle care.
+          <p className="text-sm sm:text-base text-[#1B1D1D]/75 font-normal">
+            Read real patient feedback on our clinical care, atmosphere, and smile results.
           </p>
         </div>
 
+        {/* Reviews Layout: 1 Featured + 3 Supporting */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Main Featured Testimonial (Left 7 Cols) */}
-          <div className="lg:col-span-7 bg-[#143C3A] text-white rounded-3xl p-8 sm:p-10 shadow-clinic-elevated flex flex-col justify-between relative overflow-hidden">
-            <Quote className="absolute top-6 right-6 w-20 h-20 text-white/5 pointer-events-none" />
-
-            <div className="space-y-6 z-10">
-              <div className="flex items-center justify-between">
-                <div className="flex text-[#B8926A]">
-                  {[...Array(featured.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#B8926A]" />
-                  ))}
-                </div>
-                <span className="text-xs text-white/70 font-semibold">{featured.date}</span>
+          {/* Featured Review */}
+          <div className="lg:col-span-5 bg-[#F5F2EB] border border-[#CCD6CF] rounded-3xl p-7 sm:p-8 flex flex-col justify-between shadow-clinic-card relative">
+            <Quote className="w-10 h-10 text-[#143C3A]/15 absolute top-6 right-6" />
+            <div className="space-y-4">
+              <div className="flex items-center gap-1.5 text-[#B8926A]">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#B8926A]" />
+                ))}
               </div>
-
-              <blockquote className="font-serif text-xl sm:text-2xl text-white italic leading-relaxed">
-                &ldquo;{featured.text}&rdquo;
-              </blockquote>
+              <p className="font-serif text-lg sm:text-xl text-[#143C3A] leading-relaxed italic">
+                &ldquo;{featuredReview.quote}&rdquo;
+              </p>
             </div>
 
-            <div className="pt-8 mt-6 border-t border-white/10 flex items-center justify-between z-10">
+            <div className="pt-6 border-t border-[#CCD6CF]/50 flex items-center justify-between mt-6">
               <div>
-                <span className="font-serif font-bold text-lg text-white block">{featured.author}</span>
-                <span className="text-xs text-[#B8926A] font-semibold">{featured.treatment}</span>
+                <span className="font-bold text-sm text-[#143C3A] block">{featuredReview.name}</span>
+                <span className="text-xs text-[#1B1D1D]/70">{featuredReview.patientType}</span>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Verified Patient</span>
-              </div>
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
             </div>
           </div>
 
-          {/* Supporting Testimonial Grid (Right 5 Cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            {supporting.map((rev) => (
+          {/* 3 Smaller Supporting Reviews */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
+            {supportingReviews.map((rev, idx) => (
               <div
-                key={rev.id}
-                className="bg-white border border-[#CCD6CF] rounded-2xl p-6 shadow-clinic-card hover:border-[#143C3A] transition-all space-y-3"
+                key={idx}
+                className="bg-white border border-[#CCD6CF] rounded-2xl p-5 shadow-clinic-soft space-y-2.5 flex flex-col justify-between"
               >
-                <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center justify-between">
                   <div className="flex text-[#B8926A]">
-                    {[...Array(rev.rating)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-[#B8926A]" />
                     ))}
                   </div>
-                  <span className="text-[#1B1D1D]/50">{rev.date}</span>
+                  <span className="text-[11px] text-[#1B1D1D]/50">{rev.date}</span>
                 </div>
 
-                <p className="text-xs text-[#1B1D1D]/80 leading-relaxed italic font-normal">
-                  &ldquo;{rev.text}&rdquo;
+                <p className="text-xs text-[#1B1D1D]/80 leading-relaxed italic font-serif">
+                  &ldquo;{rev.quote}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-2 border-t border-[#CCD6CF]/40 text-xs">
-                  <span className="font-bold text-[#143C3A]">{rev.author}</span>
-                  <span className="text-[11px] text-[#1B1D1D]/60 font-medium">{rev.treatment}</span>
+                <div className="pt-2 border-t border-[#CCD6CF]/30 flex items-center justify-between text-[11px]">
+                  <span className="font-bold text-[#143C3A]">{rev.name}</span>
+                  <span className="text-[#1B1D1D]/60">{rev.patientType}</span>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Read More Google Reviews Button */}
+        <div className="text-center pt-2">
+          <Link href="/reviews" className="btn-secondary text-xs py-3.5 px-8">
+            <span>Read More Google Reviews</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#143C3A]" />
+          </Link>
         </div>
       </div>
     </section>

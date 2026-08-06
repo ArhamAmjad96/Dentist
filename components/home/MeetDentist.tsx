@@ -4,87 +4,119 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Award, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import { practiceConfig } from '@/data/practice';
+import { ArrowRight, Award, CheckCircle2, ShieldCheck, HeartHandshake } from 'lucide-react';
+import { teamData } from '@/data/team';
 
 export const MeetDentist: React.FC = () => {
+  const leadDentist = teamData[0] || {
+    name: 'Dr. Alistair Vance',
+    role: 'Principal Cosmetic Dentist & Clinical Director',
+    qualifications: 'BDS (Lond), MSc Implant Dentistry',
+    gdcNumber: '198421',
+    experienceYears: 18,
+    photo: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
+    quote: 'Great dentistry should improve your confidence without changing what makes your smile yours.',
+    bio: 'Dr. Vance leads St. James Clinic with over 18 years of clinical experience in advanced restorative, clear aligner orthodontics, and implant dentistry across London and the UK.',
+  };
+
+  const clinicPhotos = [
+    {
+      title: 'Serene Treatment Suite',
+      image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80',
+    },
+    {
+      title: '3D iTero Intraoral Scanner',
+      image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
+    },
+  ];
+
   return (
-    <section className="py-24 bg-white border-b border-[#CCD6CF]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Portrait Column (Left 5 Cols) */}
-          <div className="lg:col-span-5 relative">
-            <div className="relative h-[480px] sm:h-[580px] w-full rounded-3xl overflow-hidden border border-[#CCD6CF] shadow-clinic-elevated group">
-              <Image
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=1000&q=80"
-                alt="Dr. Alistair Vance Principal Dentist"
-                fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-102"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#143C3A]/60 via-transparent to-transparent" />
-            </div>
+    <section className="py-16 lg:py-20 bg-white border-b border-[#CCD6CF]/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <span className="text-xs font-semibold text-[#143C3A] uppercase tracking-widest block">
+            Clinical Leadership & Environment
+          </span>
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#1B1D1D] tracking-tight">
+            Meet the Dentist & Clinic Experience
+          </h2>
+          <p className="text-sm sm:text-base text-[#1B1D1D]/75 font-normal">
+            Personalised care guided by clinical expertise in a calm, modern Mayfair setting.
+          </p>
+        </div>
 
-            {/* Overlapping Badge */}
-            <div className="absolute -bottom-6 -right-4 bg-[#143C3A] text-white p-5 rounded-2xl border border-white/20 shadow-clinic-elevated max-w-[240px]">
-              <span className="block text-2xl font-bold font-serif text-[#B8926A]">18+ Years</span>
-              <span className="text-xs text-white/80 font-medium">Of Private Clinical Experience in London</span>
-            </div>
-          </div>
-
-          {/* Editorial Biography Column (Right 7 Cols) */}
+        {/* Unified Editorial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Lead Dentist Profile */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5F2EB] border border-[#CCD6CF] text-xs font-semibold text-[#143C3A]">
-              <Award className="w-3.5 h-3.5" />
-              <span>Lead Principal Clinician</span>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-6 items-start">
+              {/* Dentist Photo */}
+              <div className="relative w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden border border-[#CCD6CF] shadow-clinic-card shrink-0">
+                <Image
+                  src={leadDentist.photo}
+                  alt={leadDentist.name}
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
 
-            <div>
-              <h2 className="font-serif text-4xl sm:text-5xl font-bold text-[#1B1D1D] tracking-tight">
-                {practiceConfig.principalDentist.name}
-              </h2>
-              <p className="text-xs sm:text-sm font-semibold text-[#143C3A] mt-1">
-                {practiceConfig.principalDentist.qualifications} • {practiceConfig.principalDentist.gdcNumber}
-              </p>
+              {/* Bio & Credentials */}
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F5F2EB] border border-[#CCD6CF] text-[11px] font-semibold text-[#143C3A]">
+                  <Award className="w-3.5 h-3.5 text-[#B8926A]" />
+                  <span>18+ Years Clinical Excellence • GDC {leadDentist.gdcNumber}</span>
+                </div>
+
+                <h3 className="font-serif font-bold text-2xl sm:text-3xl text-[#143C3A]">
+                  {leadDentist.name}
+                </h3>
+
+                <p className="text-xs font-semibold text-[#143C3A]/80">
+                  {leadDentist.role} — <span className="text-[#1B1D1D]/70 font-normal">{leadDentist.qualifications}</span>
+                </p>
+
+                <p className="text-xs sm:text-sm text-[#1B1D1D]/80 leading-relaxed font-normal">
+                  {leadDentist.bio}
+                </p>
+              </div>
             </div>
 
             {/* Quote Block */}
-            <blockquote className="border-l-2 border-[#B8926A] pl-5 py-1 italic font-serif text-xl sm:text-2xl text-[#143C3A] leading-relaxed">
-              &ldquo;Great dentistry should improve your confidence without changing what makes your smile yours.&rdquo;
-            </blockquote>
-
-            {/* Bio Paragraphs */}
-            <div className="space-y-4 text-xs sm:text-base text-[#1B1D1D]/80 leading-relaxed font-normal">
-              <p>
-                Dr Alistair Vance qualified from King’s College London Dental Institute and completed advanced postgraduate qualifications in Implant Dentistry at the Royal College of Surgeons of England.
+            <div className="bg-[#F5F2EB] border-l-4 border-[#143C3A] p-5 rounded-r-2xl space-y-2">
+              <p className="font-serif italic text-sm sm:text-base text-[#143C3A] leading-relaxed">
+                &ldquo;Great dentistry should improve your confidence without changing what makes your smile yours.&rdquo;
               </p>
-              <p>
-                His clinical focus centers on minimally invasive cosmetic restorative care, computer-guided dental implantology, and anxiety-free patient care. He believes in thorough diagnostic consultations, where treatment plans are explained clearly with zero pressure.
-              </p>
+              <span className="text-xs font-semibold text-[#1B1D1D]/70 block">— {leadDentist.name}</span>
             </div>
 
-            {/* Credentials Pill Row */}
-            <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-[#143C3A]">
-              <div className="flex items-center gap-1.5 bg-[#F5F2EB] px-3.5 py-2 rounded-xl border border-[#CCD6CF]/50">
-                <CheckCircle2 className="w-4 h-4 text-[#143C3A]" />
-                <span>MSc Implant Dentistry</span>
-              </div>
-              <div className="flex items-center gap-1.5 bg-[#F5F2EB] px-3.5 py-2 rounded-xl border border-[#CCD6CF]/50">
-                <CheckCircle2 className="w-4 h-4 text-[#143C3A]" />
-                <span>MJDF RCS (Eng)</span>
-              </div>
-              <div className="flex items-center gap-1.5 bg-[#F5F2EB] px-3.5 py-2 rounded-xl border border-[#CCD6CF]/50">
-                <CheckCircle2 className="w-4 h-4 text-[#143C3A]" />
-                <span>Full GDC & CQC Registered</span>
-              </div>
-            </div>
-
-            {/* Profile CTA */}
-            <div className="pt-4 flex items-center gap-4">
-              <Link href="/team" className="btn-primary text-xs py-3.5 px-7">
-                <span>View Full Clinical Team</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#B8926A]" />
+            <div className="pt-2">
+              <Link href="/about" className="btn-secondary text-xs py-3 px-6">
+                <span>View Full Team & Biography</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#143C3A]" />
               </Link>
             </div>
+          </div>
+
+          {/* Right Column: 2 Clinic Experience Photos */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
+            {clinicPhotos.map((item, idx) => (
+              <div
+                key={idx}
+                className="relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-[#CCD6CF] shadow-clinic-card group"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 text-xs font-bold text-white tracking-wide">
+                  {item.title}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

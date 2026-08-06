@@ -2,95 +2,81 @@
 'use client';
 
 import React from 'react';
-import { Calendar, FileText, Sparkles, HeartHandshake, ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { Calendar, FileText, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const PatientJourney: React.FC = () => {
   const steps = [
     {
       number: '01',
       title: 'Book your consultation',
+      description: 'Schedule your initial appointment online or by phone with our friendly Mayfair reception team.',
       icon: Calendar,
-      description: 'Schedule a calm, comprehensive 45-minute clinical assessment at a time convenient for you.',
     },
     {
       number: '02',
       title: 'Receive your personalised plan',
+      description: 'Undergo a 3D intraoral scan and receive a transparent treatment plan with fixed fees.',
       icon: FileText,
-      description: 'Review low-dose 3D digital scans, treatment timelines, and transparent written fee estimates.',
     },
     {
       number: '03',
       title: 'Begin your treatment',
+      description: 'Relax in our tranquil care suites as your bespoke dental treatment is precisely delivered.',
       icon: Sparkles,
-      description: 'Experience gentle, evidence-based care delivered in a relaxed, comfortable environment.',
     },
     {
       number: '04',
       title: 'Enjoy ongoing aftercare',
-      icon: HeartHandshake,
-      description: 'Benefit from dedicated post-treatment follow-ups, warranty protection, and preventive maintenance.',
+      description: 'Benefit from comprehensive post-treatment care and dedicated long-term smile support.',
+      icon: ShieldCheck,
     },
   ];
 
   return (
-    <section className="py-24 bg-[#F5F2EB] border-b border-[#CCD6CF]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 lg:py-20 bg-[#F5F2EB] border-b border-[#CCD6CF]/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
           <span className="text-xs font-semibold text-[#143C3A] uppercase tracking-widest block">
-            Transparent Care Process
+            Seamless Experience
           </span>
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#1B1D1D] tracking-tight">
-            Your Personalised Patient Journey
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#1B1D1D] tracking-tight">
+            Your Patient Journey
           </h2>
-          <p className="text-sm sm:text-base text-[#1B1D1D]/70 font-normal">
-            From your initial consultation through to aftercare, every step is designed for your comfort and clarity.
+          <p className="text-xs sm:text-sm text-[#1B1D1D]/75 font-normal">
+            Four simple steps from your first enquiry to a lifetime of confident smiles.
           </p>
         </div>
 
-        {/* 4-Step Timeline Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {steps.map((step, idx) => {
+        {/* Compact 4-Step Process Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.number}
-                className="bg-white border border-[#CCD6CF] rounded-3xl p-6 sm:p-7 shadow-clinic-card hover:border-[#143C3A] transition-all group relative flex flex-col justify-between"
+                className="bg-white border border-[#CCD6CF] rounded-2xl p-6 shadow-clinic-card relative flex flex-col justify-between space-y-4"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F5F2EB] border border-[#CCD6CF] flex items-center justify-center text-[#143C3A] group-hover:bg-[#143C3A] group-hover:text-white transition-colors">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="font-serif font-bold text-2xl text-[#143C3A]/30 group-hover:text-[#143C3A] transition-colors">
-                      {step.number}
-                    </span>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#B8926A] tracking-wider uppercase">
+                    Step {step.number}
+                  </span>
+                  <div className="w-9 h-9 rounded-xl bg-[#F5F2EB] flex items-center justify-center text-[#143C3A]">
+                    <Icon className="w-4 h-4" />
                   </div>
-
-                  <h3 className="font-serif text-xl font-bold text-[#143C3A] mb-2 group-hover:text-[#143C3A]">
-                    {step.title}
-                  </h3>
-
-                  <p className="text-xs text-[#1B1D1D]/80 leading-relaxed font-normal">
-                    {step.description}
-                  </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#CCD6CF]/30 mt-6 flex items-center text-[11px] font-bold text-[#143C3A]">
-                  <span>Step {idx + 1} of 4</span>
+                <div className="space-y-1.5">
+                  <h3 className="font-serif font-bold text-lg text-[#143C3A]">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-[#1B1D1D]/75 leading-relaxed font-normal">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             );
           })}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-12 text-center">
-          <Link href="/contact#appointment-form" className="btn-primary text-xs py-3.5 px-8">
-            <Calendar className="w-3.5 h-3.5 text-[#B8926A]" />
-            <span>Start Your Journey — Book Consultation</span>
-          </Link>
         </div>
       </div>
     </section>
